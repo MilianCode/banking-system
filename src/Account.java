@@ -25,15 +25,15 @@ public class Account {
         return balance;
     }
 
-    public boolean logIn() {
-        int pincodeLog = 0;
-        if (pincodeLog > 9999 || pincodeLog < 0000){
-            System.out.println("Sorry, pincode must contain 4 characters\nTry again: ");
-            Scanner in = new Scanner(System.in);
-            pincode = in.nextInt();
-            logIn();
+    public boolean checkId(int accountNumber){
+        if (this.accountNumber == accountNumber){
+            return true;
+        }else {
+            return false;
         }
+    }
 
+    public boolean checkPin(int pincode) {
         if (this.pincode == pincode){
             return true;
         }else {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="">
+    <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
     </list>
@@ -64,7 +64,7 @@
       <updated>1674859827161</updated>
       <workItem from="1674859828621" duration="1987000" />
       <workItem from="1674861898665" duration="654000" />
-      <workItem from="1674945109990" duration="1236000" />
+      <workItem from="1674945109990" duration="3622000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -73,7 +73,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674862340659</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1674946382602</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1674946382602</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
