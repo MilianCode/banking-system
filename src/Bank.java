@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Bank {
     private ArrayList<Account> accounts;
+    private HashMap<Integer, Customer> customers;
     private String bankName;
 
     public Bank(String bankName) {
@@ -12,7 +14,12 @@ public class Bank {
     public String getBankName() {
         return bankName;
     }
-
+    public HashMap<Integer, Customer> getCustomers(){
+        return customers;
+    }
+    public void addCustomer(int customerId, Customer customer){
+        customers.put(customerId, customer);
+    }
     public void addAccount(Account account) {
         accounts.add(account);
     }
@@ -24,6 +31,20 @@ public class Bank {
             }
         }
         return null;
+    }
+
+    public boolean checkAccountNumber(int accountNumber){
+        if (getAccount(accountNumber) != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean checkAccountPin(int pincode, int accountNumber){
+        Account account =  new Account();
+        account = getAccount(accountNumber);
+        return account.checkPin(pincode);
     }
 
     public void addCustomer(Customer customer) {

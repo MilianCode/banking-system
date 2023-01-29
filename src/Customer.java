@@ -1,18 +1,36 @@
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Customer {
     private int customerId;
+    private String password;
     private String name;
     private String address;
     private String phoneNumber;
     private ArrayList<Account> accounts;
 
-    public Customer(int customerId, String name, String address, String phoneNumber) {
+    Scanner in = new Scanner(System.in);
+
+    public Customer(int customerId, String name, String address, String phoneNumber, String password) {
         this.customerId = customerId;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.password = password;
         accounts = new ArrayList<Account>();
+    }
+
+
+
+    private boolean checkNewPassword(String password){
+        if (password.length() < 8){
+            System.out.println("Password must be at least 8 symbols");
+            password = in.nextLine();
+            checkNewPassword(password);
+        }
+        return true;
     }
 
     public int getCustomerId() {

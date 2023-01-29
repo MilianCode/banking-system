@@ -3,9 +3,13 @@ import java.util.Scanner;
 public class Account {
     private int accountNumber;
     private String accountHolderName;
+    private String accountName;
     private double balance;
     private int pincode;
 
+    public Account(){
+
+    }
     public Account(int accountNumber, String accountHolderName, double balance, int pincode) {
         this.accountNumber = accountNumber;
         this.accountHolderName = accountHolderName;

@@ -4,6 +4,10 @@
     <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/MainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainWork.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +44,16 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainWork">
     <configuration name="MainTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="MAIN_CLASS_NAME" value="Test.MainTest" />
+      <module name="BankingSystem" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainWork" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainWork" />
       <module name="BankingSystem" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -50,6 +61,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainWork" />
         <item itemvalue="Application.MainTest" />
       </list>
     </recent_temporary>
@@ -64,7 +76,8 @@
       <updated>1674859827161</updated>
       <workItem from="1674859828621" duration="1987000" />
       <workItem from="1674861898665" duration="654000" />
-      <workItem from="1674945109990" duration="3622000" />
+      <workItem from="1674945109990" duration="10857000" />
+      <workItem from="1675036012936" duration="358000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -80,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674946382602</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1674949200559</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674949200559</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
