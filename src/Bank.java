@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Bank {
+public class Bank implements java.io.Serializable{
     private ArrayList<Account> accounts;
-    private HashMap<Integer, Customer> customers;
+    private HashMap<Integer, Customer> customers = new HashMap<Integer, Customer>();
     private String bankName;
 
     public Bank(String bankName) {

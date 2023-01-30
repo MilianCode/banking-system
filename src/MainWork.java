@@ -1,22 +1,35 @@
+import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MainWork {
 
-    private static HashMap<Integer, Customer> customers = new HashMap<>();
-
+    static HashMap<Integer, Customer> customers = new HashMap<Integer, Customer>();
+    static Bank bank = new Bank("Santander");
     public static void main(String[] args) {
-
-        Bank bank = new Bank("Santander");
-        customers = bank.getCustomers();
-        customers.put(0, new Customer(66666, "admin", "admin", "999888777","maksym1"));
+//        try {
+//            FileInputStream fileIn = new FileInputStream("bank.txt");
+//            ObjectInputStream in = new ObjectInputStream(fileIn);
+//            bank = (Bank) in.readObject();
+//            in.close();
+//            fileIn.close();
+//        } catch (IOException i) {
+//            i.printStackTrace();
+//            return;
+//        } catch (ClassNotFoundException c) {
+//            System.out.println("Employee class not found");
+//            c.printStackTrace();
+//            return;
+//        }
+        //customers = bank.getCustomers();
+        //customers.put(2, new Customer(66666, "admin", "admin", "999888777","maksym1"));
         ATM atm = new ATM(bank, 100000);
         Scanner in = new Scanner(System.in);
 
         int menu = 0;
-
-        System.out.println("1.Log in\t2.Create account");
+        System.out.println("====Choose option====");
+        System.out.println("1.Log in\n2.Create account");
         menu = in.nextInt();
         if (menu == 1){
             int accountNumber, pincode;
@@ -39,7 +52,6 @@ public class MainWork {
         if (!customers.isEmpty() && customers.containsKey(customerId)) {
             singUp();
         } else {
-            System.out.println("Your customer id is | " + customerId + " | Please, make sure you remember it. You will need it in future to login into your account");
             System.out.println("Enter customer name: ");
             String name = in.nextLine();
             System.out.println("Enter customer address: ");
@@ -51,8 +63,31 @@ public class MainWork {
 
             Customer customer = new Customer(customerId, name, address, phone, password);
             customers.put(customerId, customer);
-            System.out.println("Sign up successful.");
+            bank.addCustomer(customerId, customer);
+            System.out.println("Your customer id is | " + customerId + " | Please, make sure you remember it. You will need it in future to login into your account");
+            System.out.println("Your customer account created.");
+
+            try {
+                FileOutputStream fileOut =
+                        new FileOutputStream("bank.txt");
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                //out.writeObject(customer);
+                out.writeObject(bank);
+                out.flush();
+                out.close();
+                fileOut.close();
+                System.out.println("Serialized data is saved in bank.ser");
+            } catch (IOException i) {
+                i.printStackTrace();
+            }
         }
+
+
+    }
+
+    private static void logIn(){
+        Scanner in = new Scanner(System.in);
+
     }
 
 

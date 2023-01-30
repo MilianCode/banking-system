@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Account {
+public class Account implements java.io.Serializable{
     private int accountNumber;
     private String accountHolderName;
     private String accountName;

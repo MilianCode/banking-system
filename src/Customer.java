@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Customer {
+public class Customer implements java.io.Serializable{
     private int customerId;
     private String password;
     private String name;

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git" />
+    <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainWork.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,6 +77,8 @@
       <workItem from="1674861898665" duration="654000" />
       <workItem from="1674945109990" duration="10857000" />
       <workItem from="1675036012936" duration="461000" />
+      <workItem from="1675074398618" duration="3064000" />
+      <workItem from="1675081932650" duration="2040000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -100,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675036441186</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1675074410480</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675074410480</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,5 +135,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="https://github.com/MilianCode/banking-system.git" />
     <option name="LAST_COMMIT_MESSAGE" value="https://github.com/MilianCode/banking-system.git" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
