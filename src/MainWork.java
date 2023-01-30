@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MainWork {
 
     static HashMap<Integer, Customer> customers = new HashMap<Integer, Customer>();
-    static Bank bank = new Bank("Santander");
+    static Bank bank;
     public static void main(String[] args) {
 //        try {
 //            FileInputStream fileIn = new FileInputStream("bank.txt");
@@ -24,6 +24,7 @@ public class MainWork {
 //        }
         //customers = bank.getCustomers();
         //customers.put(2, new Customer(66666, "admin", "admin", "999888777","maksym1"));
+        bank = new Bank("Santander");
         ATM atm = new ATM(bank, 100000);
         Scanner in = new Scanner(System.in);
 
@@ -42,6 +43,7 @@ public class MainWork {
         }else if(menu == 2){
             singUp();
         }
+        System.out.println("End of program");
     }
 
     private static void singUp() {
@@ -68,15 +70,13 @@ public class MainWork {
             System.out.println("Your customer account created.");
 
             try {
-                FileOutputStream fileOut =
-                        new FileOutputStream("bank.txt");
+                FileOutputStream fileOut = new FileOutputStream("bank.txt");
                 ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                //out.writeObject(customer);
+                //out.writeObject(customers);
                 out.writeObject(bank);
-                out.flush();
                 out.close();
                 fileOut.close();
-                System.out.println("Serialized data is saved in bank.ser");
+                System.out.println("Serialized data is saved in bank.txt");
             } catch (IOException i) {
                 i.printStackTrace();
             }

@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -47,7 +50,18 @@ public class Bank implements java.io.Serializable{
         return account.checkPin(pincode);
     }
 
-    public void addCustomer(Customer customer) {
+//    private void writeObject(ObjectOutputStream oos)
+//            throws IOException {
+//        oos.defaultWriteObject();
+//        oos.writeObject(customers);
+//    }
 
-    }
+//    private void readObject(ObjectInputStream ois)
+//            throws ClassNotFoundException, IOException {
+//        ois.defaultReadObject();
+//        Integer houseNumber = (Integer) ois.readObject();
+//        Address a = new Address();
+//        a.setHouseNumber(houseNumber);
+//        this.setAddress(a);
+//    }
 }

@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainWork.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +76,7 @@
       <workItem from="1674945109990" duration="10857000" />
       <workItem from="1675036012936" duration="461000" />
       <workItem from="1675074398618" duration="3064000" />
-      <workItem from="1675081932650" duration="2040000" />
+      <workItem from="1675081932650" duration="5228000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -115,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675074410480</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1675095164475</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675095164475</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
