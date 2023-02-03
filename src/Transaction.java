@@ -2,15 +2,15 @@ import java.util.Date;
 
 public class Transaction {
     private double amount;
-    private Account fromAccount;
-    private Account toAccount;
+    private Customer fromCustomer;
+    private Customer toCustomer;
     private Date date;
     private String type;
 
-    public Transaction(double amount, Account fromAccount, Account toAccount, String type) {
+    public Transaction(double amount, Customer fromCustomer, Customer toCustomer, String type) {
         this.amount = amount;
-        this.fromAccount = fromAccount;
-        this.toAccount = toAccount;
+        this.fromCustomer = fromCustomer;
+        this.toCustomer = toCustomer;
         this.type = type;
         date = new Date();
     }
@@ -19,12 +19,12 @@ public class Transaction {
         return amount;
     }
 
-    public Account getFromAccount() {
-        return fromAccount;
+    public Customer getFromAccount() {
+        return fromCustomer;
     }
 
-    public Account getToAccount() {
-        return toAccount;
+    public Customer getToAccount() {
+        return toCustomer;
     }
 
     public String getType() {

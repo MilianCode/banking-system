@@ -2,34 +2,74 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+import java.sql.*;
 
-public class Customer implements java.io.Serializable{
+
+public class Customer {
     private int customerId;
-    private String password;
+    private int pincode;
     private String name;
+    private String lastName;
     private String address;
     private String phoneNumber;
-    private ArrayList<Account> accounts;
+    private double balance;
 
     Scanner in = new Scanner(System.in);
 
-    public Customer(int customerId, String name, String address, String phoneNumber, String password) {
+    public Customer(int customerId, String name, String lastName,String address, String phoneNumber, int pincode) {
         this.customerId = customerId;
         this.name = name;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.password = password;
-        accounts = new ArrayList<Account>();
+        this.pincode = pincode;
     }
 
+    public Boolean registration() {
+        try {
+            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@localhost:3306:");
+
+            Statement stmt = c.createStatement();
+
+            String sql = "INSERT INTO customer VALUES (customerId, '" + pincode + "', '" + name + "', '" + lastName + "', '" + address + "' , '" + phoneNumber + "', '" + balance + "')";
+
+            stmt.executeUpdate(sql);
+
+            c.close();
 
 
-    private boolean checkNewPassword(String password){
-        if (password.length() < 8){
-            System.out.println("Password must be at least 8 symbols");
-            password = in.nextLine();
-            checkNewPassword(password);
+            System.out.println("Account created successfully");
+
+            System.out.println("Card number: " + customerId);
+
+            System.out.println("Pincode: " + pincode);
+
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
         }
+
+        return false;
+    }
+
+    public boolean checkPin(int pincode) {
+        if (this.pincode == pincode){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public boolean withdraw(double amount) {
+        if (amount > balance) {
+            return false;
+        }
+        balance -= amount;
         return true;
     }
 
@@ -49,11 +89,6 @@ public class Customer implements java.io.Serializable{
         return phoneNumber;
     }
 
-    public ArrayList<Account> getAccounts() {
-        return accounts;
-    }
+    public double getBalance(){return balance;}
 
-    public void addAccount(Account account) {
-        accounts.add(account);
-    }
 }
