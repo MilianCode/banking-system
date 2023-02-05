@@ -109,7 +109,7 @@ public class Customer {
                 }
             }
 
-            System.out.println("Customer id " + customerId + "doesn't exist\nTry again");
+            System.out.println("Customer id " + customerId + " doesn't exist");
             return false;
         }catch (Exception e){
             e.printStackTrace();
@@ -157,14 +157,42 @@ public class Customer {
     }
     public void deposit(double amount) {
         balance += amount;
+        try {
+            Connection connection;
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            System.out.println("Connection succesful: deposit");
+            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+            connection.close();
+            stmt.close();
+            System.out.println("Successfully deposited " + amount + " $");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    public boolean withdraw(double amount) {
+    public void withdraw(double amount) {
         if (amount > balance) {
-            return false;
+            System.out.println("Insufficient funds");
+            return;
         }
         balance -= amount;
-        return true;
+        try {
+            Connection connection;
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            System.out.println("Connection succesful: undep");
+            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+            connection.close();
+            stmt.close();
+            System.out.println("Successfully withdrawn of " + amount + " $");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public int getCustomerId() {

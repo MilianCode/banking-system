@@ -33,20 +33,20 @@ public class MainWork {
         switch (menu){
             case 1:
                 System.out.println("\nYour balance: " + customer.getBalance() +" $\n");
+                return;
             case 2:
-
+                deposit();
+                return;
             case 3:
-
+                withdrawal();
+                return;
             case 4:
 
             case 5:
                 System.out.println("End of program");
                 return;
-            default:
-                System.out.println("End of program");
         }
-
-
+        System.out.println("End of program");
     }
 
     private static void singUp() {
@@ -89,19 +89,35 @@ public class MainWork {
         if(customer.checkCustomerId(customerId)){
             System.out.println("Enter pincode: ");
             pincode = in.nextInt();
-            customer.login(customerId, pincode);
-            System.out.println("Login successful");
-            return true;
+            if(customer.login(customerId, pincode)){
+                System.out.println("Login successful");
+                return true;
+            }else{
+                System.out.println("Login failed");
+                return false;
+            }
+
         }
         return false;
     }
 
 
-    private static boolean deposit(){
+    private static void deposit(){
         Scanner in = new Scanner(System.in);
-        Customer customer = new Customer();
-        int customerId, pincode;
-        return false;
+        int dep;
+
+        System.out.println("Enter amount of deposit: ");
+        dep = in.nextInt();
+        customer.deposit(dep);
+    }
+
+    private static void withdrawal(){
+        Scanner in = new Scanner(System.in);
+        int amount;
+
+        System.out.println("Enter the withdrawal amount: ");
+        amount = in.nextInt();
+        customer.withdraw(amount);
     }
 }
 
