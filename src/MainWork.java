@@ -11,7 +11,7 @@ public class MainWork {
     public static void main(String[] args) {
 
         //bank = new Bank("Santander");
-        atm = new ATM(bank, 100000);
+        atm = new ATM(1, bank, 100000);
         Scanner in = new Scanner(System.in);
 
         int menu = 0;
@@ -41,7 +41,8 @@ public class MainWork {
                 withdrawal();
                 return;
             case 4:
-
+                transfer();
+                return;
             case 5:
                 System.out.println("End of program");
                 return;
@@ -118,6 +119,27 @@ public class MainWork {
         System.out.println("Enter the withdrawal amount: ");
         amount = in.nextInt();
         customer.withdraw(amount);
+    }
+
+    private static void transfer(){
+        Scanner in = new Scanner(System.in);
+        Customer customerRecieve = new Customer();
+        int receiveId, amount;
+
+        System.out.println("Enter recipient customer id: ");
+        receiveId = in.nextInt();
+
+        if (!customerRecieve.checkCustomerId(receiveId)){
+            return;
+        }
+
+        System.out.println("Enter amount: ");
+        amount = in.nextInt();
+        if (!customer.transferFrom(amount)){
+            return;
+        }
+        customerRecieve.transferTo(amount);
+        System.out.println("You successfully transfered " + amount +  "$ to " + customerRecieve.getName());
     }
 }
 

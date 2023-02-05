@@ -155,6 +155,7 @@ public class Customer {
             e.printStackTrace();
         }
     }
+
     public void deposit(double amount) {
         balance += amount;
         try {
@@ -173,10 +174,10 @@ public class Customer {
         }
     }
 
-    public void withdraw(double amount) {
+    public boolean withdraw(double amount) {
         if (amount > balance) {
             System.out.println("Insufficient funds");
-            return;
+            return false;
         }
         balance -= amount;
         try {
@@ -190,18 +191,67 @@ public class Customer {
             connection.close();
             stmt.close();
             System.out.println("Successfully withdrawn of " + amount + " $");
+            System.out.println("Current balance: " + balance);
+            return true;
         }catch (Exception e){
             e.printStackTrace();
         }
+        return false;
+    }
+
+    public boolean transferFrom(double amount) {
+        if (amount > balance) {
+            System.out.println("Insufficient funds");
+            return false;
+        }
+        balance -= amount;
+        try {
+            Connection connection;
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            System.out.println("Connection succesful: undep");
+            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+            connection.close();
+            stmt.close();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean transferTo(double amount){
+        balance += amount;
+        try {
+            Connection connection;
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            System.out.println("Connection succesful: undep");
+            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+            connection.close();
+            stmt.close();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+             return false;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getCustomerId() {
         return customerId;
     }
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
 
     public String getAddress() {
         return address;
