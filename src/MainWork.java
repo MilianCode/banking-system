@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MainWork {
 
-    static HashMap<Integer, Customer> customers = new HashMap<Integer, Customer>();
+    static Customer customer = new Customer();
     static Bank bank;
     static ATM atm;
     public static void main(String[] args) {
@@ -14,17 +14,39 @@ public class MainWork {
         atm = new ATM(bank, 100000);
         Scanner in = new Scanner(System.in);
 
-        boolean log = false;
         int menu = 0;
         System.out.println("====Choose option====");
         System.out.println("1.Log in\n2.Create account");
         menu = in.nextInt();
         if (menu == 1){
-            logIn();
+            if(!logIn())return;
         }else if(menu == 2){
             singUp();
+            return;
+        }else{
+            System.out.println();
         }
-        System.out.println("End of program");
+
+        System.out.println("====Choose option====");
+        System.out.println("1.Check balance\n2.Deposit\n3.Withdrawal\n4.Transfer\n5.Exit");
+        menu = in.nextInt();
+        switch (menu){
+            case 1:
+                System.out.println("\nYour balance: " + customer.getBalance() +" $\n");
+            case 2:
+
+            case 3:
+
+            case 4:
+
+            case 5:
+                System.out.println("End of program");
+                return;
+            default:
+                System.out.println("End of program");
+        }
+
+
     }
 
     private static void singUp() {
@@ -34,7 +56,7 @@ public class MainWork {
 
         System.out.println("cust: " + customerId);
 
-        if (!customers.isEmpty() && customers.containsKey(customerId)) {
+        if (customer.checkCustomerId(customerId)) {
             singUp();
         } else {
             System.out.println("Enter customer name: ");
@@ -60,7 +82,6 @@ public class MainWork {
 
     private static boolean logIn(){
         Scanner in = new Scanner(System.in);
-        Customer customer = new Customer();
         int customerId, pincode;
 
         System.out.println("Enter your customerId: ");
@@ -75,5 +96,12 @@ public class MainWork {
         return false;
     }
 
+
+    private static boolean deposit(){
+        Scanner in = new Scanner(System.in);
+        Customer customer = new Customer();
+        int customerId, pincode;
+        return false;
+    }
 }
 

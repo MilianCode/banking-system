@@ -76,6 +76,7 @@ public class Customer {
             stmt.close();
 
             if (this.pincode == pincode){
+                setBalance();
                 return true;
             }else{
                 System.out.println("Incorrect pin");
@@ -127,6 +128,29 @@ public class Customer {
 
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
+
+            connection.close();
+            stmt.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void setBalance(){
+        try {
+            Connection connection;
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            System.out.println("Connection succesful: setBalance");
+            String sql = "Select balance FROM customer WHERE customerId = " + customerId;
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                this.balance = rs.getInt(1);
+            }
+            connection.close();
+            rs.close();
+            stmt.close();
         }catch (Exception e){
             e.printStackTrace();
         }
