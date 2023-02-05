@@ -27,16 +27,16 @@ public class Customer {
 
     public Boolean registration() {
         try {
-            Connection c = DriverManager.getConnection("jdbc:oracle:thin:@localhost:3306:");
-
-            Statement stmt = c.createStatement();
+            Connection connection;
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            System.out.println("Connection succesful");
 
             String sql = "INSERT INTO customer VALUES (customerId, '" + pincode + "', '" + name + "', '" + lastName + "', '" + address + "' , '" + phoneNumber + "', '" + balance + "')";
-
+            Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
 
-            c.close();
-
+            connection.close();
 
             System.out.println("Account created successfully");
 
@@ -47,7 +47,7 @@ public class Customer {
 
             return true;
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         return false;
