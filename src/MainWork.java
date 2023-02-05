@@ -14,18 +14,13 @@ public class MainWork {
         atm = new ATM(bank, 100000);
         Scanner in = new Scanner(System.in);
 
+        boolean log = false;
         int menu = 0;
         System.out.println("====Choose option====");
         System.out.println("1.Log in\n2.Create account");
         menu = in.nextInt();
         if (menu == 1){
-            int accountNumber, pincode;
-            System.out.println("Enter account number: ");
-            accountNumber = in.nextInt();
-            //bank.checkAccountNumber(accountNumber);
-            System.out.println("Enter PIN: ");
-            pincode = in.nextInt();
-            //bank.checkAccountPin(pincode, accountNumber);
+            logIn();
         }else if(menu == 2){
             singUp();
         }
@@ -36,6 +31,8 @@ public class MainWork {
         Scanner in = new Scanner(System.in);
 
         int customerId = ThreadLocalRandom.current().nextInt(10000, 99999);
+
+        System.out.println("cust: " + customerId);
 
         if (!customers.isEmpty() && customers.containsKey(customerId)) {
             singUp();
@@ -53,7 +50,7 @@ public class MainWork {
 
             Customer customer = new Customer(customerId, name, lastName, address, phone, pincode);
             customer.registration();
-            customers.put(customerId, customer);
+            customer.setCustomerId(customerId);
             System.out.println("Your customer id is | " + customerId + " | Please, make sure you remember it. You will need it in future to login into your account");
             System.out.println("Your customer account created.");
         }
@@ -61,12 +58,22 @@ public class MainWork {
 
     }
 
-    private static void logIn(){
+    private static boolean logIn(){
         Scanner in = new Scanner(System.in);
+        Customer customer = new Customer();
+        int customerId, pincode;
 
+        System.out.println("Enter your customerId: ");
+        customerId = in.nextInt();
+        if(customer.checkCustomerId(customerId)){
+            System.out.println("Enter pincode: ");
+            pincode = in.nextInt();
+            customer.login(customerId, pincode);
+            System.out.println("Login successful");
+            return true;
+        }
+        return false;
     }
-
-
 
 }
 
