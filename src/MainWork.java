@@ -139,7 +139,7 @@ public class MainWork {
             return;
         }
         customerRecieve.transferTo(amount);
-        System.out.println("You successfully transfered " + amount +  "$ to " + customerRecieve.getName());
+        System.out.println("You successfully transfered " + amount +  "$ to " + customerRecieve.getName() + " " + customerRecieve.getLastName());
     }
 }
 

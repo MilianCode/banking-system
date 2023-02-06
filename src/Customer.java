@@ -232,26 +232,41 @@ public class Customer {
             String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
+
+            sql = "Select name FROM customer WHERE customerId = " + customerId;
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                this.name = rs.getString(1);
+            }
+
+            sql = "Select surname FROM customer WHERE customerId = " + customerId;
+            rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                this.lastName = rs.getString(1);
+            }
+
+            rs.close();
             connection.close();
             stmt.close();
             return true;
         }catch (Exception e){
             e.printStackTrace();
         }
-             return false;
+        return false;
+    }
+
+
+    public int getCustomerId() {
+        return customerId;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public String getLastName(){
+        return lastName;
     }
-
-//    public String getName() {
-//        return name;
-//    }
 
     public String getAddress() {
         return address;
