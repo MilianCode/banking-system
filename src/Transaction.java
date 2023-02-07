@@ -1,3 +1,7 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Date;
 
 public class Transaction {
@@ -13,6 +17,21 @@ public class Transaction {
         this.toCustomer = toCustomer;
         this.type = type;
         date = new Date();
+        try {
+            Connection connection;
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            System.out.println("Connection succesful: trans");
+            String sql = "INSERT INTO transaction VALUES ( NULL, "+ amount +", "+ fromCustomer.getCustomerId() + ", "+ toCustomer.getCustomerId() +", '"+ date.toString() +"', '"+ type +"')";
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+
+            connection.close();
+            stmt.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public double getAmount() {

@@ -223,13 +223,12 @@ public class Customer {
     }
 
     public boolean transferTo(double amount){
-        balance += amount;
         try {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
             System.out.println("Connection succesful: undep");
-            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
+            String sql = "UPDATE customer SET balance = balance + "+ amount +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
 

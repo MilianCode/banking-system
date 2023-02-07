@@ -125,11 +125,18 @@ public class MainWork {
         Scanner in = new Scanner(System.in);
         Customer customerRecieve = new Customer();
         int receiveId, amount;
+        String type;
 
         System.out.println("Enter recipient customer id: ");
         receiveId = in.nextInt();
 
         if (!customerRecieve.checkCustomerId(receiveId)){
+            System.out.println("ERROR: This id doesn't exist");
+            return;
+        }
+
+        if (customer.getCustomerId() == receiveId){
+            System.out.println("ERROR: You can't transfer money to yourself");
             return;
         }
 
@@ -138,8 +145,14 @@ public class MainWork {
         if (!customer.transferFrom(amount)){
             return;
         }
+
+        System.out.print("Enter type: ");
+        in.nextLine();
+        type = in.nextLine();
+
         customerRecieve.transferTo(amount);
         System.out.println("You successfully transfered " + amount +  "$ to " + customerRecieve.getName() + " " + customerRecieve.getLastName());
+        Transaction transaction = new Transaction(amount, customer, customerRecieve, type);
     }
 }
 
