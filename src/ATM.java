@@ -1,11 +1,9 @@
 public class ATM {
     private int atmId;
-    private Bank bank;
     private double cashInMachine;
 
-    public ATM(int atmId, Bank bank, double cashInMachine) {
+    public ATM(int atmId,double cashInMachine) {
         this.atmId = atmId;
-        this.bank = bank;
         this.cashInMachine = cashInMachine;
     }
 

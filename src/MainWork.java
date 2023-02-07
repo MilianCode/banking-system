@@ -6,12 +6,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MainWork {
 
     static Customer customer = new Customer();
-    static Bank bank;
     static ATM atm;
     public static void main(String[] args) {
 
-        //bank = new Bank("Santander");
-        atm = new ATM(1, bank, 100000);
+
+        atm = new ATM(1,100000);
         Scanner in = new Scanner(System.in);
 
         int menu = 0;
@@ -152,7 +151,7 @@ public class MainWork {
 
         customerRecieve.transferTo(amount);
         System.out.println("You successfully transfered " + amount +  "$ to " + customerRecieve.getName() + " " + customerRecieve.getLastName());
-        Transaction transaction = new Transaction(amount, customer, customerRecieve, type);
+        new Transaction(amount, customer, customerRecieve, type);
     }
 }
 
