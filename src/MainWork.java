@@ -23,26 +23,36 @@ public class MainWork {
             singUp();
             return;
         }else{
-            System.out.println();
+            System.out.println("ERROR: Bad choose\nEnd of program");
+            return;
         }
 
         System.out.println("====Choose option====");
-        System.out.println("1.Check balance\n2.Deposit\n3.Withdrawal\n4.Transfer\n5.Exit");
+        System.out.println("1.Check balance\n2.Deposit\n3.Withdrawal\n4.Transfer\n5.Show all transaction\n6.Exit");
         menu = in.nextInt();
         switch (menu){
             case 1:
                 System.out.println("\nYour balance: " + customer.getBalance() +" $\n");
+                System.out.println("End of program");
                 return;
             case 2:
                 deposit();
+                System.out.println("End of program");
                 return;
             case 3:
                 withdrawal();
+                System.out.println("End of program");
                 return;
             case 4:
                 transfer();
+                System.out.println("End of program");
                 return;
             case 5:
+                System.out.println("Amount | To id |             date             |   type\n"
+                        + customer.showAllTransactions1());
+                System.out.println("End of program");
+                return;
+            case 6:
                 System.out.println("End of program");
                 return;
         }
@@ -115,6 +125,11 @@ public class MainWork {
         Scanner in = new Scanner(System.in);
         int amount;
 
+        if (customer.getBalance() == 0){
+            System.out.println("You don't have money on your bank account");
+            return;
+        }
+
         System.out.println("Enter the withdrawal amount: ");
         amount = in.nextInt();
         customer.withdraw(amount);
@@ -125,6 +140,11 @@ public class MainWork {
         Customer customerRecieve = new Customer();
         int receiveId, amount;
         String type;
+
+        if (customer.getBalance() == 0){
+            System.out.println("You don't have money on your bank account");
+            return;
+        }
 
         System.out.println("Enter recipient customer id: ");
         receiveId = in.nextInt();
@@ -152,6 +172,10 @@ public class MainWork {
         customerRecieve.transferTo(amount);
         System.out.println("You successfully transfered " + amount +  "$ to " + customerRecieve.getName() + " " + customerRecieve.getLastName());
         new Transaction(amount, customer, customerRecieve, type);
+    }
+
+    private static void showAllTransactions(){
+
     }
 }
 

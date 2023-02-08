@@ -16,6 +16,8 @@ public class Customer {
 
     Scanner in = new Scanner(System.in);
 
+
+
     public Customer(){
 
     }
@@ -201,7 +203,7 @@ public class Customer {
 
     public boolean transferFrom(double amount) {
         if (amount > balance) {
-            System.out.println("Insufficient funds");
+            System.out.println("Insufficient funds, you have " + balance + " $ on your bank account");
             return false;
         }
         balance -= amount;
@@ -254,6 +256,48 @@ public class Customer {
         return false;
     }
 
+
+    public String showAllTransactions1(){
+        try {
+            Connection connection;
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            System.out.println("Connection succesful: show");
+
+            String allTransactions = "";
+            String sql = "Select amount, toId, date, type FROM transaction WHERE fromId = " + customerId;
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                for (int i = 1; i <= 4; i++) {
+                    if (i == 1){
+
+                        int amount = rs.getInt(i);
+                        if (amount < 100 && amount >= 10){
+                            allTransactions += rs.getString(i) + "$  | ";
+                        }else if(amount < 10){
+                            allTransactions += rs.getString(i) + "$   | ";
+                        }else{
+                            allTransactions += rs.getString(i) + "$ | ";
+                        }
+
+                    }else if(i == 4){
+                        allTransactions += rs.getString(i);
+                    }else{
+                        allTransactions += rs.getString(i) + " | ";
+                    }
+                }
+                allTransactions += "\n";
+            }
+            rs.close();
+            connection.close();
+            stmt.close();
+            return allTransactions;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "Error";
+    }
 
     public int getCustomerId() {
         return customerId;
