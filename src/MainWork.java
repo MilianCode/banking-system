@@ -6,11 +6,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MainWork {
 
     static Customer customer = new Customer();
-    static ATM atm;
+
     public static void main(String[] args) {
-
-
-        atm = new ATM(1,100000);
         Scanner in = new Scanner(System.in);
 
         int menu = 0;
@@ -48,7 +45,7 @@ public class MainWork {
                 System.out.println("End of program");
                 return;
             case 5:
-                System.out.println("Amount | To id |             date             |   type\n"
+                System.out.println("Amount | To id |             Date             |   Type\n"
                         + customer.showAllTransactions1());
                 System.out.println("End of program");
                 return;
