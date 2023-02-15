@@ -16,8 +16,6 @@ public class Customer {
 
     Scanner in = new Scanner(System.in);
 
-
-
     public Customer(){
 
     }
@@ -38,10 +36,6 @@ public class Customer {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
 
-//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
-//            System.out.println("Connection succesful: reg");
-
-
             String sql = "INSERT INTO customer VALUES (customerId, '" + pincode + "', '" + name + "', '" + lastName + "', '" + address + "' , '" + phoneNumber + "', '" + balance + "')";
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
@@ -61,6 +55,7 @@ public class Customer {
 
             return true;
         } catch (Exception e) {
+            System.out.println("Customer.registration() problem");
             e.printStackTrace();
         }
 
@@ -72,9 +67,6 @@ public class Customer {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-
-//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
-//            System.out.println("Connection succesful: login");
 
             String sql  = "Select pincode FROM customer WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -95,19 +87,20 @@ public class Customer {
             }
 
         }catch (Exception e){
+            System.out.println("Customer.login() problem");
             e.printStackTrace();
         }
         return false;
     }
 
+
+//  Method that checks if customer entered correct customer id
+//  I decided to create this function, because I need to check this instance more than once
     public boolean checkCustomerId(int customerId){
         try {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-
-//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster
-//            System.out.println("Connection succesful: checkId");
 
             String sql  = "Select customerId FROM customer";
             Statement stmt = connection.createStatement();
@@ -122,44 +115,22 @@ public class Customer {
                 }
             }
 
-            return false;
-
         }catch (Exception e){
+            System.out.println("Customer.checkCustomerId() problem");
             e.printStackTrace();
         }
 
         return false;
     }
 
-//    private void setCustomerId(int customerId){
-//        try {
-//            Connection connection;
-//            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-//
-////            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
-////            System.out.println("Connection succesful: checkId");
-//
-//            String sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + phoneNumber + "'";
-//
-//            Statement stmt = connection.createStatement();
-//            stmt.executeUpdate(sql);
-//
-//            connection.close();
-//            stmt.close();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
 
+
+//  Method that takes balance to customer, when he logged in. It makes easier to manage balance in program
     public void setBalance(){
         try {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-
-//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
-//            System.out.println("Connection succesful: setBalance");
 
             String sql = "Select balance FROM customer WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -174,11 +145,12 @@ public class Customer {
             stmt.close();
 
         }catch (Exception e){
+            System.out.println("Customer.setBalance() problem");
             e.printStackTrace();
         }
     }
 
-//  Method that allows us to deposit money to account
+//  Method that adding money to customer account
     public boolean deposit(double amount) {
         balance += amount;
         try {
@@ -196,19 +168,18 @@ public class Customer {
             return true;
 
         }catch (Exception e){
-            System.out.println("Customer.deposit error");
+            balance -= amount;
+            System.out.println("Customer.deposit problem");
             e.printStackTrace();
         }
 
         return false;
     }
 
+//   Method that takes money from account, when customer makes withdrawal from ATM
     public boolean withdraw(double amount) {
 
-        if (amount > balance) {
-            System.out.println("Insufficient funds");
-            return false;
-        }
+        if (!checkIfCanWithdraw(amount)) return false;
 
         balance -= amount;
 
@@ -216,9 +187,6 @@ public class Customer {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-
-//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
-//            System.out.println("Connection succesful: undep");
 
             String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -228,25 +196,27 @@ public class Customer {
             stmt.close();
 
             return true;
+
         }catch (Exception e){
+            balance += amount;
+            System.out.println("Customer.withdraw() problem");
             e.printStackTrace();
         }
+
         return false;
     }
 
+//   Method that takes money from account that makes transaction
     public boolean transferFrom(double amount) {
-        if (amount > balance) {
-            System.out.println("Insufficient funds, you have " + balance + " $ on your bank account");
-            return false;
-        }
+
+        if (!checkIfCanWithdraw(amount)) return false;
+
         balance -= amount;
+
         try {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-
-//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
-//            System.out.println("Connection succesful: undep");
 
             String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -257,19 +227,19 @@ public class Customer {
 
             return true;
         }catch (Exception e){
+            balance += balance;
+            System.out.println("Customer.transferFrom() problem");
             e.printStackTrace();
         }
         return false;
     }
 
+//   Method that adding money to customer, who is transaction reciever
     public boolean transferTo(double amount){
         try {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-
-//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
-//            System.out.println("Connection succesful: transfer");
 
             String sql = "UPDATE customer SET balance = balance + "+ amount +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -294,21 +264,21 @@ public class Customer {
             stmt.close();
 
             return true;
+
         }catch (Exception e){
+            System.out.println("Customer.transferTo() problem");
             e.printStackTrace();
         }
+
         return false;
     }
 
-
-    public String showAllTransactions1(){
+// Method that creating String variable that contains information about all transactions from your account
+    public String showAllTransactions(){
         try {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-
-//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
-//            System.out.println("Connection succesful: show");
 
             String allTransactions = "";
             String sql = "Select amount, toId, date, type FROM transaction WHERE fromId = " + customerId;
@@ -343,9 +313,21 @@ public class Customer {
 
             return allTransactions;
         }catch (Exception e){
+            System.out.println("Customer.showAllTransactions() problem");
             e.printStackTrace();
         }
         return "Error";
+    }
+
+//  Method that checks if customer have enought money to make transaction or withdrawal
+//  I decided to create this function, because I need to check this instance more than once
+    private boolean checkIfCanWithdraw(double amount){
+        if (amount > balance) {
+            System.out.println("Insufficient funds, you have only " + balance + " $ on your bank account");
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public int getCustomerId() {
@@ -396,3 +378,25 @@ public class Customer {
         this.balance = balance;
     }
 }
+
+
+//    private void setCustomerId(int customerId){
+//        try {
+//            Connection connection;
+//            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+//
+////            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
+////            System.out.println("Connection succesful: checkId");
+//
+//            String sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + phoneNumber + "'";
+//
+//            Statement stmt = connection.createStatement();
+//            stmt.executeUpdate(sql);
+//
+//            connection.close();
+//            stmt.close();
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }

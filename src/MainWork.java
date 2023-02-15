@@ -46,7 +46,7 @@ public class MainWork {
                 return;
             case 5:
                 System.out.println("Amount | To id |             Date             |   Type\n"
-                        + customer.showAllTransactions1());
+                        + customer.showAllTransactions());
                 System.out.println("End of program");
                 return;
             case 6:
@@ -185,10 +185,6 @@ public class MainWork {
         customerRecieve.transferTo(amount);
         System.out.println("You successfully transfered " + amount +  "$ to " + customerRecieve.getName() + " " + customerRecieve.getLastName());
         new Transaction(amount, customer, customerRecieve, type);
-    }
-
-    private static void showAllTransactions(){
-
     }
 }
 
