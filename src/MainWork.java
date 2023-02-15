@@ -61,25 +61,31 @@ public class MainWork {
 
         int customerId = ThreadLocalRandom.current().nextInt(10000, 99999);
 
-        System.out.println("cust: " + customerId);
+
 
         if (customer.checkCustomerId(customerId)) {
             singUp();
         } else {
+            System.out.println("Customer Id: " + customerId);
+
             System.out.println("Enter customer name: ");
             String name = in.nextLine();
+
             System.out.println("Enter lastname: ");
             String lastName = in.nextLine();
+
             System.out.println("Enter customer address: ");
             String address = in.nextLine();
+
             System.out.println("Enter phone: ");
             String phone = in.nextLine();
+
             System.out.println("Create pincode: ");
             int pincode = in.nextInt();
 
             Customer customer = new Customer(customerId, name, lastName, address, phone, pincode);
-            customer.registration();
-            customer.setCustomerId(customerId);
+            customer.registration(customerId);
+//            customer.setCustomerId(customerId);
             System.out.println("Your customer id is | " + customerId + " | Please, make sure you remember it. You will need it in future to login into your account");
             System.out.println("Your customer account created.");
         }
@@ -103,7 +109,8 @@ public class MainWork {
                 System.out.println("Login failed");
                 return false;
             }
-
+        }else{
+            System.out.println("This customer id doesn't exist");
         }
         return false;
     }
@@ -115,7 +122,11 @@ public class MainWork {
 
         System.out.println("Enter amount of deposit: ");
         dep = in.nextInt();
-        customer.deposit(dep);
+        if(customer.deposit(dep)){
+            System.out.println("Successfully deposited " + dep + " $");
+        }else{
+            System.out.println("Error while depositing");
+        }
     }
 
     private static void withdrawal(){
@@ -129,7 +140,12 @@ public class MainWork {
 
         System.out.println("Enter the withdrawal amount: ");
         amount = in.nextInt();
-        customer.withdraw(amount);
+        if(customer.withdraw(amount)){
+            System.out.println("Successfully withdrawn of " + amount + " $");
+            System.out.println("Current balance: " + customer.getBalance());
+        }else{
+            System.out.println("Error while withdrawning");
+        }
     }
 
     private static void transfer(){

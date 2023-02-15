@@ -31,15 +31,22 @@ public class Customer {
         this.pincode = pincode;
     }
 
-    public boolean registration() {
+    public boolean registration(int customerId) {
         try {
+            this.customerId = customerId;
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: reg");
+
+//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
+//            System.out.println("Connection succesful: reg");
+
 
             String sql = "INSERT INTO customer VALUES (customerId, '" + pincode + "', '" + name + "', '" + lastName + "', '" + address + "' , '" + phoneNumber + "', '" + balance + "')";
             Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+
+            sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + phoneNumber + "'";
             stmt.executeUpdate(sql);
 
             stmt.close();
@@ -47,7 +54,7 @@ public class Customer {
 
             System.out.println("Account created successfully");
 
-            System.out.println("Card number: " + customerId);
+            System.out.println("Customer Id(you need to remember it): " + customerId);
 
             System.out.println("Pincode: " + pincode);
 
@@ -65,7 +72,9 @@ public class Customer {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: login");
+
+//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
+//            System.out.println("Connection succesful: login");
 
             String sql  = "Select pincode FROM customer WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -96,7 +105,9 @@ public class Customer {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: checkId");
+
+//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster
+//            System.out.println("Connection succesful: checkId");
 
             String sql  = "Select customerId FROM customer";
             Statement stmt = connection.createStatement();
@@ -111,89 +122,111 @@ public class Customer {
                 }
             }
 
-            System.out.println("Customer id " + customerId + " doesn't exist");
             return false;
+
         }catch (Exception e){
             e.printStackTrace();
         }
+
         return false;
     }
 
-    public void setCustomerId(int customerId){
-        try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: checkId");
-
-            String sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + phoneNumber + "'";
-
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sql);
-
-            connection.close();
-            stmt.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+//    private void setCustomerId(int customerId){
+//        try {
+//            Connection connection;
+//            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+//
+////            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
+////            System.out.println("Connection succesful: checkId");
+//
+//            String sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + phoneNumber + "'";
+//
+//            Statement stmt = connection.createStatement();
+//            stmt.executeUpdate(sql);
+//
+//            connection.close();
+//            stmt.close();
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 
     public void setBalance(){
         try {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: setBalance");
+
+//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
+//            System.out.println("Connection succesful: setBalance");
+
             String sql = "Select balance FROM customer WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
+
             while (rs.next()) {
                 this.balance = rs.getInt(1);
             }
+
             connection.close();
             rs.close();
             stmt.close();
+
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public void deposit(double amount) {
+//  Method that allows us to deposit money to account
+    public boolean deposit(double amount) {
         balance += amount;
         try {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: deposit");
+
             String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
+
             connection.close();
             stmt.close();
-            System.out.println("Successfully deposited " + amount + " $");
+
+            return true;
+
         }catch (Exception e){
+            System.out.println("Customer.deposit error");
             e.printStackTrace();
         }
+
+        return false;
     }
 
     public boolean withdraw(double amount) {
+
         if (amount > balance) {
             System.out.println("Insufficient funds");
             return false;
         }
+
         balance -= amount;
+
         try {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: undep");
+
+//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
+//            System.out.println("Connection succesful: undep");
+
             String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
+
             connection.close();
             stmt.close();
-            System.out.println("Successfully withdrawn of " + amount + " $");
-            System.out.println("Current balance: " + balance);
+
             return true;
         }catch (Exception e){
             e.printStackTrace();
@@ -211,12 +244,17 @@ public class Customer {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: undep");
+
+//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
+//            System.out.println("Connection succesful: undep");
+
             String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
+
             connection.close();
             stmt.close();
+
             return true;
         }catch (Exception e){
             e.printStackTrace();
@@ -229,19 +267,24 @@ public class Customer {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: undep");
+
+//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
+//            System.out.println("Connection succesful: transfer");
+
             String sql = "UPDATE customer SET balance = balance + "+ amount +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
 
             sql = "Select name FROM customer WHERE customerId = " + customerId;
             ResultSet rs = stmt.executeQuery(sql);
+
             while (rs.next()){
                 this.name = rs.getString(1);
             }
 
             sql = "Select surname FROM customer WHERE customerId = " + customerId;
             rs = stmt.executeQuery(sql);
+
             while (rs.next()){
                 this.lastName = rs.getString(1);
             }
@@ -249,6 +292,7 @@ public class Customer {
             rs.close();
             connection.close();
             stmt.close();
+
             return true;
         }catch (Exception e){
             e.printStackTrace();
@@ -262,12 +306,15 @@ public class Customer {
             Connection connection;
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-            System.out.println("Connection succesful: show");
+
+//            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
+//            System.out.println("Connection succesful: show");
 
             String allTransactions = "";
             String sql = "Select amount, toId, date, type FROM transaction WHERE fromId = " + customerId;
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
+
             while (rs.next()){
                 for (int i = 1; i <= 4; i++) {
                     if (i == 1){
@@ -289,9 +336,11 @@ public class Customer {
                 }
                 allTransactions += "\n";
             }
+
             rs.close();
             connection.close();
             stmt.close();
+
             return allTransactions;
         }catch (Exception e){
             e.printStackTrace();
@@ -319,6 +368,31 @@ public class Customer {
         return phoneNumber;
     }
 
-    public double getBalance(){return balance;}
+    public double getBalance(){
+        return balance;
+    }
 
+    public void setPincode(int pincode) {
+        this.pincode = pincode;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 }
