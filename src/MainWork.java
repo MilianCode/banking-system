@@ -1,5 +1,6 @@
-import java.io.*;
-import java.util.HashMap;
+import customer.Customer;
+import transaction.Transaction;
+
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -66,7 +67,7 @@ public class MainWork {
         if (customer.checkCustomerId(customerId)) {
             singUp();
         } else {
-            System.out.println("Customer Id: " + customerId);
+            System.out.println("customer.Customer Id: " + customerId);
 
             System.out.println("Enter customer name: ");
             String name = in.nextLine();

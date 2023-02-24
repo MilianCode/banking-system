@@ -1,7 +1,7 @@
-import java.util.ArrayList;
-import java.util.Random;
+package customer;
+
+import databaseconnector.DatabaseConnector;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 import java.sql.*;
 
 
@@ -13,8 +13,6 @@ public class Customer {
     private String address;
     private String phoneNumber;
     private double balance = 0;
-
-    Scanner in = new Scanner(System.in);
 
     public Customer(){
 
@@ -32,9 +30,8 @@ public class Customer {
     public boolean registration(int customerId) {
         try {
             this.customerId = customerId;
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+
+            Connection connection = DatabaseConnector.getConnection();
 
             String sql = "INSERT INTO customer VALUES (customerId, '" + pincode + "', '" + name + "', '" + lastName + "', '" + address + "' , '" + phoneNumber + "', '" + balance + "')";
             Statement stmt = connection.createStatement();
@@ -48,14 +45,14 @@ public class Customer {
 
             System.out.println("Account created successfully");
 
-            System.out.println("Customer Id(you need to remember it): " + customerId);
+            System.out.println("customer.Customer Id(you need to remember it): " + customerId);
 
             System.out.println("Pincode: " + pincode);
 
 
             return true;
-        } catch (Exception e) {
-            System.out.println("Customer.registration() problem");
+        } catch (SQLException e) {
+            System.out.println("customer.Customer.registration() problem");
             e.printStackTrace();
         }
 
@@ -64,9 +61,8 @@ public class Customer {
 
     public boolean login(int customerId, int pincode){
         try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+
+            Connection connection = DatabaseConnector.getConnection();
 
             String sql  = "Select pincode FROM customer WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -74,9 +70,10 @@ public class Customer {
             while (rs.next()){
                 this.pincode = rs.getInt(1);
             }
-            connection.close();
+
             rs.close();
             stmt.close();
+            connection.close();
 
             if (this.pincode == pincode){
                 setBalance();
@@ -86,8 +83,8 @@ public class Customer {
                 return false;
             }
 
-        }catch (Exception e){
-            System.out.println("Customer.login() problem");
+        }catch (SQLException e){
+            System.out.println("customer.Customer.login() problem");
             e.printStackTrace();
         }
         return false;
@@ -98,25 +95,24 @@ public class Customer {
 //  I decided to create this function, because I need to check this instance more than once
     public boolean checkCustomerId(int customerId){
         try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            Connection connection = DatabaseConnector.getConnection();
 
             String sql  = "Select customerId FROM customer";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
+
             while (rs.next()){
                 this.customerId = rs.getInt(1);
                 if (this.customerId == customerId){
-                    connection.close();
                     rs.close();
                     stmt.close();
+                    connection.close();
                     return true;
                 }
             }
 
-        }catch (Exception e){
-            System.out.println("Customer.checkCustomerId() problem");
+        }catch (SQLException e){
+            System.out.println("customer.Customer.checkCustomerId() problem");
             e.printStackTrace();
         }
 
@@ -128,9 +124,7 @@ public class Customer {
 //  Method that takes balance to customer, when he logged in. It makes easier to manage balance in program
     public void setBalance(){
         try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            Connection connection = DatabaseConnector.getConnection();
 
             String sql = "Select balance FROM customer WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -140,12 +134,12 @@ public class Customer {
                 this.balance = rs.getInt(1);
             }
 
-            connection.close();
             rs.close();
             stmt.close();
+            connection.close();
 
-        }catch (Exception e){
-            System.out.println("Customer.setBalance() problem");
+        }catch (SQLException e){
+            System.out.println("customer.Customer.setBalance() problem");
             e.printStackTrace();
         }
     }
@@ -154,9 +148,7 @@ public class Customer {
     public boolean deposit(double amount) {
         balance += amount;
         try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            Connection connection = DatabaseConnector.getConnection();
 
             String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -167,9 +159,9 @@ public class Customer {
 
             return true;
 
-        }catch (Exception e){
+        }catch (SQLException e){
             balance -= amount;
-            System.out.println("Customer.deposit problem");
+            System.out.println("customer.Customer.deposit problem");
             e.printStackTrace();
         }
 
@@ -184,9 +176,7 @@ public class Customer {
         balance -= amount;
 
         try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            Connection connection = DatabaseConnector.getConnection();
 
             String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -197,9 +187,9 @@ public class Customer {
 
             return true;
 
-        }catch (Exception e){
+        }catch (SQLException e){
             balance += amount;
-            System.out.println("Customer.withdraw() problem");
+            System.out.println("customer.Customer.withdraw() problem");
             e.printStackTrace();
         }
 
@@ -214,9 +204,7 @@ public class Customer {
         balance -= amount;
 
         try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            Connection connection = DatabaseConnector.getConnection();
 
             String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -226,9 +214,9 @@ public class Customer {
             stmt.close();
 
             return true;
-        }catch (Exception e){
+        }catch (SQLException e){
             balance += balance;
-            System.out.println("Customer.transferFrom() problem");
+            System.out.println("customer.Customer.transferFrom() problem");
             e.printStackTrace();
         }
         return false;
@@ -237,9 +225,7 @@ public class Customer {
 //   Method that adding money to customer, who is transaction reciever
     public boolean transferTo(double amount){
         try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            Connection connection = DatabaseConnector.getConnection();
 
             String sql = "UPDATE customer SET balance = balance + "+ amount +" WHERE customerId = " + customerId;
             Statement stmt = connection.createStatement();
@@ -265,8 +251,8 @@ public class Customer {
 
             return true;
 
-        }catch (Exception e){
-            System.out.println("Customer.transferTo() problem");
+        }catch (SQLException e){
+            System.out.println("customer.Customer.transferTo() problem");
             e.printStackTrace();
         }
 
@@ -276,9 +262,7 @@ public class Customer {
 // Method that creating String variable that contains information about all transactions from your account
     public String showAllTransactions(){
         try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            Connection connection = DatabaseConnector.getConnection();
 
             String allTransactions = "";
             String sql = "Select amount, toId, date, type FROM transaction WHERE fromId = " + customerId;
@@ -308,12 +292,12 @@ public class Customer {
             }
 
             rs.close();
-            connection.close();
             stmt.close();
+            connection.close();
 
             return allTransactions;
-        }catch (Exception e){
-            System.out.println("Customer.showAllTransactions() problem");
+        }catch (SQLException e){
+            System.out.println("customer.Customer.showAllTransactions() problem");
             e.printStackTrace();
         }
         return "Error";

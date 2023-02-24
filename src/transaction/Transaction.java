@@ -1,6 +1,11 @@
+package transaction;
+
+import customer.Customer;
+import databaseconnector.DatabaseConnector;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
@@ -17,10 +22,10 @@ public class Transaction {
         this.toCustomer = toCustomer;
         this.type = type;
         date = new Date();
+
         try {
-            Connection connection;
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
+            Connection connection = DatabaseConnector.getConnection();
+
             System.out.println("Connection succesful: trans");
             String sql = "INSERT INTO transaction VALUES ( NULL, "+ amount +", "+ fromCustomer.getCustomerId() + ", "+ toCustomer.getCustomerId() +", '"+ date.toString() +"', '"+ type +"')";
             Statement stmt = connection.createStatement();
@@ -29,9 +34,10 @@ public class Transaction {
             connection.close();
             stmt.close();
 
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (SQLException sqle){
+            sqle.printStackTrace();
         }
+
     }
 
     public double getAmount() {
