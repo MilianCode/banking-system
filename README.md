@@ -1,4 +1,4 @@
 # banking-system
-Now it's finally done and fully working project | 
-Maybe in future I will improve it with some new functionality | 
+Now it's fully working project | 
+I am still working on it, adding tests and make code more clearly | 
 It uses MySQL server to save data
