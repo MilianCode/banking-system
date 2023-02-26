@@ -1,18 +1,21 @@
 package customer;
 
+import com.sun.tools.javac.Main;
 import databaseconnector.DatabaseConnector;
+import main.MainWork;
+
 import java.util.Scanner;
 import java.sql.*;
 
 
 public class Customer {
-    private int customerId;
-    private int pincode;
-    private String name;
-    private String lastName;
-    private String address;
-    private String phoneNumber;
-    private double balance = 0;
+    private static int customerId;
+    private static int pincode;
+    private static String name;
+    private static String lastName;
+    private static String address;
+    private static String phoneNumber;
+    private static double balance = 0;
 
     public Customer(){
 
@@ -59,36 +62,36 @@ public class Customer {
         return false;
     }
 
-    public boolean login(int customerId, int pincode){
-        try {
-
-            Connection connection = DatabaseConnector.getConnection();
-
-            String sql  = "Select pincode FROM customer WHERE customerId = " + customerId;
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()){
-                this.pincode = rs.getInt(1);
-            }
-
-            rs.close();
-            stmt.close();
-            connection.close();
-
-            if (this.pincode == pincode){
-                setBalance();
-                return true;
-            }else{
-                System.out.println("Incorrect pin");
-                return false;
-            }
-
-        }catch (SQLException e){
-            System.out.println("customer.Customer.login() problem");
-            e.printStackTrace();
-        }
-        return false;
-    }
+//    public boolean login(int customerId, int pincode){
+//        try {
+//
+//            Connection connection = DatabaseConnector.getConnection();
+//
+//            String sql  = "Select pincode FROM customer WHERE customerId = " + customerId;
+//            Statement stmt = connection.createStatement();
+//            ResultSet rs = stmt.executeQuery(sql);
+//            while (rs.next()){
+//                this.pincode = rs.getInt(1);
+//            }
+//
+//            rs.close();
+//            stmt.close();
+//            connection.close();
+//
+//            if (this.pincode == pincode){
+//                setBalance();
+//                return true;
+//            }else{
+//                System.out.println("Incorrect pin");
+//                return false;
+//            }
+//
+//        }catch (SQLException e){
+//            System.out.println("customer.Customer.login() problem");
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
 
 //  Method that checks if customer entered correct customer id
@@ -122,7 +125,7 @@ public class Customer {
 
 
 //  Method that takes balance to customer, when he logged in. It makes easier to manage balance in program
-    public void setBalance(){
+    public static void setBalance(){
         try {
             Connection connection = DatabaseConnector.getConnection();
 
@@ -131,7 +134,7 @@ public class Customer {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                this.balance = rs.getInt(1);
+                balance = rs.getInt(1);
             }
 
             rs.close();
@@ -317,6 +320,8 @@ public class Customer {
     public int getCustomerId() {
         return customerId;
     }
+
+    public int getPincode(){ return pincode; }
 
     public String getName() {
         return name;

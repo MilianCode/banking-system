@@ -1,4 +1,7 @@
+package main;
+
 import customer.Customer;
+import customer.CustomerLogin;
 import transaction.Transaction;
 
 import java.util.Scanner;
@@ -6,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MainWork {
 
-    static Customer customer = new Customer();
+    public static Customer customer = new Customer();
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -16,7 +19,7 @@ public class MainWork {
         System.out.println("1.Log in\n2.Create account");
         menu = in.nextInt();
         if (menu == 1){
-            if(!logIn())return;
+            if(!CustomerLogin.logIn())return;
         }else if(menu == 2){
             singUp();
             return;
@@ -62,8 +65,6 @@ public class MainWork {
 
         int customerId = ThreadLocalRandom.current().nextInt(10000, 99999);
 
-
-
         if (customer.checkCustomerId(customerId)) {
             singUp();
         } else {
@@ -86,7 +87,6 @@ public class MainWork {
 
             Customer customer = new Customer(customerId, name, lastName, address, phone, pincode);
             customer.registration(customerId);
-//            customer.setCustomerId(customerId);
             System.out.println("Your customer id is | " + customerId + " | Please, make sure you remember it. You will need it in future to login into your account");
             System.out.println("Your customer account created.");
         }
@@ -94,27 +94,27 @@ public class MainWork {
 
     }
 
-    private static boolean logIn(){
-        Scanner in = new Scanner(System.in);
-        int customerId, pincode;
-
-        System.out.println("Enter your customerId: ");
-        customerId = in.nextInt();
-        if(customer.checkCustomerId(customerId)){
-            System.out.println("Enter pincode: ");
-            pincode = in.nextInt();
-            if(customer.login(customerId, pincode)){
-                System.out.println("Login successful");
-                return true;
-            }else{
-                System.out.println("Login failed");
-                return false;
-            }
-        }else{
-            System.out.println("This customer id doesn't exist");
-        }
-        return false;
-    }
+//    private static boolean logIn(){
+//        Scanner in = new Scanner(System.in);
+//        int customerId, pincode;
+//
+//        System.out.println("Enter your customerId: ");
+//        customerId = in.nextInt();
+//        if(customer.checkCustomerId(customerId)){
+//            System.out.println("Enter pincode: ");
+//            pincode = in.nextInt();
+//            if(customer.login(customerId, pincode)){
+//                System.out.println("Login successful");
+//                return true;
+//            }else{
+//                System.out.println("Login failed");
+//                return false;
+//            }
+//        }else{
+//            System.out.println("This customer id doesn't exist");
+//        }
+//        return false;
+//    }
 
 
     private static void deposit(){
