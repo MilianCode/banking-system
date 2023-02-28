@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +207,8 @@
       <workItem from="1677250556781" duration="6759000" />
       <workItem from="1677445691690" duration="8872000" />
       <workItem from="1677491588134" duration="1489000" />
-      <workItem from="1677575458808" duration="6464000" />
+      <workItem from="1677575458808" duration="7181000" />
+      <workItem from="1677615348532" duration="699000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -397,7 +399,21 @@
       <option name="project" value="LOCAL" />
       <updated>1677592273371</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1677599248374</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1677599248374</updated>
+    </task>
+    <task id="LOCAL-00029" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1677600011405</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1677600011405</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

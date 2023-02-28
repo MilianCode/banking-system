@@ -181,8 +181,8 @@ public class MainWork {
         in.nextLine();
         type = in.nextLine();
 
-        CustomerTransactionManaging.transferTo(amount);
-        System.out.println("You successfully transfered " + amount +  "$ to " + Customer.getCustomerId());
+        CustomerTransactionManaging.transferTo(amount, receiveId);
+        System.out.println("You successfully transfered " + amount +  "$ to " + receiveId);
         new Transaction(amount, Customer.getCustomerId(), receiveId, type);
     }
 }

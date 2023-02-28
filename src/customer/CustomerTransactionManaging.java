@@ -14,7 +14,7 @@ public class CustomerTransactionManaging extends Customer{
 
         if (!checkIfCanWithdraw(amount)) return false;
 
-        setBalance(getBalance() - amount);
+        setBalance((getBalance() - amount));
 
         try {
             Connection connection = DatabaseConnector.getConnection();
@@ -36,11 +36,11 @@ public class CustomerTransactionManaging extends Customer{
     }
 
     //   Method that adding money to customer, who is transaction reciever
-    public static boolean transferTo(double amount){
+    public static boolean transferTo(double amount, int customerReciever){
         try {
             Connection connection = DatabaseConnector.getConnection();
 
-            String sql = "UPDATE customer SET balance = balance + "+ amount +" WHERE customerId = " + getCustomerId();
+            String sql = "UPDATE customer SET balance = balance + "+ amount +" WHERE customerId = " + customerReciever;
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
 
