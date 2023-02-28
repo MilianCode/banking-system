@@ -1,8 +1,6 @@
 package main;
 
-import customer.Customer;
-import customer.CustomerLogin;
-import customer.CustomerRegistration;
+import customer.*;
 import transaction.Transaction;
 
 import java.util.Scanner;
@@ -124,7 +122,7 @@ public class MainWork {
 
         System.out.println("Enter amount of deposit: ");
         dep = in.nextInt();
-        if(customer.deposit(dep)){
+        if(CustomerBalanceManaging.deposit(dep)){
             System.out.println("Successfully deposited " + dep + " $");
         }else{
             System.out.println("Error while depositing");
@@ -142,7 +140,7 @@ public class MainWork {
 
         System.out.println("Enter the withdrawal amount: ");
         amount = in.nextInt();
-        if(customer.withdraw(amount)){
+        if(CustomerBalanceManaging.withdraw(amount)){
             System.out.println("Successfully withdrawn of " + amount + " $");
             System.out.println("Current balance: " + customer.getBalance());
         }else{
@@ -152,7 +150,6 @@ public class MainWork {
 
     private static void transfer(){
         Scanner in = new Scanner(System.in);
-        Customer customerRecieve = new Customer();
         int receiveId, amount;
         String type;
 
@@ -164,19 +161,19 @@ public class MainWork {
         System.out.println("Enter recipient customer id: ");
         receiveId = in.nextInt();
 
-        if (!customerRecieve.checkCustomerId(receiveId)){
+        if (!Customer.checkCustomerId(receiveId)){
             System.out.println("ERROR: This id doesn't exist");
             return;
         }
 
-        if (customer.getCustomerId() == receiveId){
+        if (Customer.getCustomerId() == receiveId){
             System.out.println("ERROR: You can't transfer money to yourself");
             return;
         }
 
         System.out.println("Enter amount: ");
         amount = in.nextInt();
-        if (!customer.transferFrom(amount)){
+        if (!CustomerTransactionManaging.transferFrom(amount)){
             return;
         }
 
@@ -184,9 +181,9 @@ public class MainWork {
         in.nextLine();
         type = in.nextLine();
 
-        customerRecieve.transferTo(amount);
-        System.out.println("You successfully transfered " + amount +  "$ to " + customerRecieve.getName() + " " + customerRecieve.getLastName());
-        new Transaction(amount, customer, customerRecieve, type);
+        CustomerTransactionManaging.transferTo(amount);
+        System.out.println("You successfully transfered " + amount +  "$ to " + Customer.getCustomerId());
+        new Transaction(amount, Customer.getCustomerId(), receiveId, type);
     }
 }
 

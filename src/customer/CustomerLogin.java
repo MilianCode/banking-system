@@ -17,7 +17,7 @@ public class CustomerLogin extends Customer{
 
         System.out.println("Enter your customerId: ");
         customerId = in.nextInt();
-        if (MainWork.customer.checkCustomerId(customerId)) {
+        if (checkCustomerId(customerId)) {
             System.out.println("Enter pincode: ");
             pincode = in.nextInt();
             if(login(customerId, pincode)){
@@ -42,15 +42,16 @@ public class CustomerLogin extends Customer{
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()){
-                MainWork.customer.setPincode(rs.getInt(1));
+                setPincode(rs.getInt(1));
             }
 
             rs.close();
             stmt.close();
             connection.close();
 
-            if (MainWork.customer.getPincode() == pincode){
-                setBalance();
+            if (getPincode() == pincode){
+                CustomerBalanceManaging.setBalance();
+                setCustomerId(customerId);
                 return true;
             }else{
                 System.out.println("Incorrect pin");

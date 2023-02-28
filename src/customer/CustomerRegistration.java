@@ -15,7 +15,7 @@ public class CustomerRegistration extends Customer{
 
         int customerId = ThreadLocalRandom.current().nextInt(10000, 99999);
 
-        if (Customer.checkCustomerId(customerId)) {
+        if (checkCustomerId(customerId)) {
             singUp();
         } else {
             System.out.println("customer.Customer Id: " + customerId);
@@ -46,16 +46,16 @@ public class CustomerRegistration extends Customer{
 
     public static boolean registration(int customerId) {
         try {
-            Customer.setCustomerId(customerId);
+            setCustomerId(customerId);
 
             Connection connection = DatabaseConnector.getConnection();
 
-            String sql = "INSERT INTO customer VALUES (customerId, '" + Customer.getPincode() + "', '" + Customer.getName() + "', " +
-                    "'" + Customer.getLastName() + "', '" + Customer.getAddress() + "' , '" + Customer.getPhoneNumber() + "', '" + Customer.getBalance() + "')";
+            String sql = "INSERT INTO customer VALUES (customerId, '" + getPincode() + "', '" + getName() + "', " +
+                    "'" + getLastName() + "', '" + getAddress() + "' , '" + getPhoneNumber() + "', '" + getBalance() + "')";
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
 
-            sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + Customer.getPhoneNumber() + "'";
+            sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + getPhoneNumber() + "'";
             stmt.executeUpdate(sql);
 
             stmt.close();
@@ -65,7 +65,7 @@ public class CustomerRegistration extends Customer{
 
             System.out.println("Customer Id(you need to remember it): " + customerId);
 
-            System.out.println("Pincode: " + Customer.getPincode());
+            System.out.println("Pincode: " + getPincode());
 
 
             return true;

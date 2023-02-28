@@ -30,73 +30,11 @@ public class Customer {
         Customer.setPincode(pincode);
     }
 
-//    public boolean registration(int customerId) {
-//        try {
-//            this.customerId = customerId;
-//
-//            Connection connection = DatabaseConnector.getConnection();
-//
-//            String sql = "INSERT INTO customer VALUES (customerId, '" + pincode + "', '" + name + "', '" + lastName + "', '" + address + "' , '" + phoneNumber + "', '" + balance + "')";
-//            Statement stmt = connection.createStatement();
-//            stmt.executeUpdate(sql);
-//
-//            sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + phoneNumber + "'";
-//            stmt.executeUpdate(sql);
-//
-//            stmt.close();
-//            connection.close();
-//
-//            System.out.println("Account created successfully");
-//
-//            System.out.println("customer.Customer Id(you need to remember it): " + customerId);
-//
-//            System.out.println("Pincode: " + pincode);
-//
-//
-//            return true;
-//        } catch (SQLException e) {
-//            System.out.println("customer.Customer.registration() problem");
-//            e.printStackTrace();
-//        }
-//
-//        return false;
-//    }
-
-//    public boolean login(int customerId, int pincode){
-//        try {
-//
-//            Connection connection = DatabaseConnector.getConnection();
-//
-//            String sql  = "Select pincode FROM customer WHERE customerId = " + customerId;
-//            Statement stmt = connection.createStatement();
-//            ResultSet rs = stmt.executeQuery(sql);
-//            while (rs.next()){
-//                this.pincode = rs.getInt(1);
-//            }
-//
-//            rs.close();
-//            stmt.close();
-//            connection.close();
-//
-//            if (this.pincode == pincode){
-//                setBalance();
-//                return true;
-//            }else{
-//                System.out.println("Incorrect pin");
-//                return false;
-//            }
-//
-//        }catch (SQLException e){
-//            System.out.println("customer.Customer.login() problem");
-//            e.printStackTrace();
-//        }
-//        return false;
-//    }
-
-
 //  Method that checks if customer entered correct customer id
 //  I decided to create this function, because I need to check this instance more than once
     public static boolean checkCustomerId(int customerId){
+        int bufId;
+
         try {
             Connection connection = DatabaseConnector.getConnection();
 
@@ -105,8 +43,8 @@ public class Customer {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){
-                Customer.setCustomerId(rs.getInt(1));
-                if (Customer.getCustomerId() == customerId){
+                bufId = rs.getInt(1);
+                if (bufId == customerId){
                     rs.close();
                     stmt.close();
                     connection.close();
@@ -125,145 +63,145 @@ public class Customer {
 
 
 //  Method that takes balance to customer, when he logged in. It makes easier to manage balance in program
-    public static void setBalance(){
-        try {
-            Connection connection = DatabaseConnector.getConnection();
-
-            String sql = "Select balance FROM customer WHERE customerId = " + customerId;
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-
-            while (rs.next()) {
-                balance = rs.getInt(1);
-            }
-
-            rs.close();
-            stmt.close();
-            connection.close();
-
-        }catch (SQLException e){
-            System.out.println("customer.Customer.setBalance() problem");
-            e.printStackTrace();
-        }
-    }
+//    public static void setBalance(){
+//        try {
+//            Connection connection = DatabaseConnector.getConnection();
+//
+//            String sql = "Select balance FROM customer WHERE customerId = " + customerId;
+//            Statement stmt = connection.createStatement();
+//            ResultSet rs = stmt.executeQuery(sql);
+//
+//            while (rs.next()) {
+//                balance = rs.getInt(1);
+//            }
+//
+//            rs.close();
+//            stmt.close();
+//            connection.close();
+//
+//        }catch (SQLException e){
+//            System.out.println("customer.Customer.setBalance() problem");
+//            e.printStackTrace();
+//        }
+//    }
 
 //  Method that adding money to customer account
-    public boolean deposit(double amount) {
-        balance += amount;
-        try {
-            Connection connection = DatabaseConnector.getConnection();
-
-            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sql);
-
-            connection.close();
-            stmt.close();
-
-            return true;
-
-        }catch (SQLException e){
-            balance -= amount;
-            System.out.println("customer.Customer.deposit problem");
-            e.printStackTrace();
-        }
-
-        return false;
-    }
+//    public boolean deposit(double amount) {
+//        balance += amount;
+//        try {
+//            Connection connection = DatabaseConnector.getConnection();
+//
+//            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
+//            Statement stmt = connection.createStatement();
+//            stmt.executeUpdate(sql);
+//
+//            connection.close();
+//            stmt.close();
+//
+//            return true;
+//
+//        }catch (SQLException e){
+//            balance -= amount;
+//            System.out.println("customer.Customer.deposit problem");
+//            e.printStackTrace();
+//        }
+//
+//        return false;
+//    }
 
 //   Method that takes money from account, when customer makes withdrawal from ATM
-    public boolean withdraw(double amount) {
+//    public boolean withdraw(double amount) {
+//
+//        if (!checkIfCanWithdraw(amount)) return false;
+//
+//        balance -= amount;
+//
+//        try {
+//            Connection connection = DatabaseConnector.getConnection();
+//
+//            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
+//            Statement stmt = connection.createStatement();
+//            stmt.executeUpdate(sql);
+//
+//            connection.close();
+//            stmt.close();
+//
+//            return true;
+//
+//        }catch (SQLException e){
+//            balance += amount;
+//            System.out.println("customer.Customer.withdraw() problem");
+//            e.printStackTrace();
+//        }
+//
+//        return false;
+//    }
 
-        if (!checkIfCanWithdraw(amount)) return false;
-
-        balance -= amount;
-
-        try {
-            Connection connection = DatabaseConnector.getConnection();
-
-            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sql);
-
-            connection.close();
-            stmt.close();
-
-            return true;
-
-        }catch (SQLException e){
-            balance += amount;
-            System.out.println("customer.Customer.withdraw() problem");
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
-//   Method that takes money from account that makes transaction
-    public boolean transferFrom(double amount) {
-
-        if (!checkIfCanWithdraw(amount)) return false;
-
-        balance -= amount;
-
-        try {
-            Connection connection = DatabaseConnector.getConnection();
-
-            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sql);
-
-            connection.close();
-            stmt.close();
-
-            return true;
-        }catch (SQLException e){
-            balance += balance;
-            System.out.println("customer.Customer.transferFrom() problem");
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-//   Method that adding money to customer, who is transaction reciever
-    public boolean transferTo(double amount){
-        try {
-            Connection connection = DatabaseConnector.getConnection();
-
-            String sql = "UPDATE customer SET balance = balance + "+ amount +" WHERE customerId = " + customerId;
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sql);
-
-            sql = "Select name FROM customer WHERE customerId = " + customerId;
-            ResultSet rs = stmt.executeQuery(sql);
-
-            while (rs.next()){
-                this.name = rs.getString(1);
-            }
-
-            sql = "Select surname FROM customer WHERE customerId = " + customerId;
-            rs = stmt.executeQuery(sql);
-
-            while (rs.next()){
-                this.lastName = rs.getString(1);
-            }
-
-            rs.close();
-            connection.close();
-            stmt.close();
-
-            return true;
-
-        }catch (SQLException e){
-            System.out.println("customer.Customer.transferTo() problem");
-            e.printStackTrace();
-        }
-
-        return false;
-    }
+////   Method that takes money from account that makes transaction
+//    public static boolean transferFrom(double amount) {
+//
+//        if (!checkIfCanWithdraw(amount)) return false;
+//
+//        balance -= amount;
+//
+//        try {
+//            Connection connection = DatabaseConnector.getConnection();
+//
+//            String sql = "UPDATE customer SET balance = "+ balance +" WHERE customerId = " + customerId;
+//            Statement stmt = connection.createStatement();
+//            stmt.executeUpdate(sql);
+//
+//            connection.close();
+//            stmt.close();
+//
+//            return true;
+//        }catch (SQLException e){
+//            balance += amount;
+//            System.out.println("customer.Customer.transferFrom() problem");
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
+//
+////   Method that adding money to customer, who is transaction reciever
+//    public static boolean transferTo(double amount){
+//        try {
+//            Connection connection = DatabaseConnector.getConnection();
+//
+//            String sql = "UPDATE customer SET balance = balance + "+ amount +" WHERE customerId = " + customerId;
+//            Statement stmt = connection.createStatement();
+//            stmt.executeUpdate(sql);
+//
+//            sql = "Select name FROM customer WHERE customerId = " + customerId;
+//            ResultSet rs = stmt.executeQuery(sql);
+//
+//            while (rs.next()){
+//                setName(rs.getString(1));
+//            }
+//
+//            sql = "Select surname FROM customer WHERE customerId = " + customerId;
+//            rs = stmt.executeQuery(sql);
+//
+//            while (rs.next()){
+//                setLastName(rs.getString(1));
+//            }
+//
+//            rs.close();
+//            connection.close();
+//            stmt.close();
+//
+//            return true;
+//
+//        }catch (SQLException e){
+//            System.out.println("customer.Customer.transferTo() problem");
+//            e.printStackTrace();
+//        }
+//
+//        return false;
+//    }
 
 // Method that creating String variable that contains information about all transactions from your account
-    public String showAllTransactions(){
+    public static String showAllTransactions(){
         try {
             Connection connection = DatabaseConnector.getConnection();
 
@@ -308,7 +246,7 @@ public class Customer {
 
 //  Method that checks if customer have enought money to make transaction or withdrawal
 //  I decided to create this function, because I need to check this instance more than once
-    private boolean checkIfCanWithdraw(double amount){
+    protected static boolean checkIfCanWithdraw(double amount){
         if (amount > balance) {
             System.out.println("Insufficient funds, you have only " + balance + " $ on your bank account");
             return false;
