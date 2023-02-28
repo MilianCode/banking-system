@@ -50,8 +50,8 @@ public class CustomerLogin extends Customer{
             connection.close();
 
             if (getPincode() == pincode){
-                CustomerBalanceManaging.setBalance();
                 setCustomerId(customerId);
+                CustomerBalanceManaging.setBalance();
                 return true;
             }else{
                 System.out.println("Incorrect pin");

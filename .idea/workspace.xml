@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git">
-      <change afterPath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/CustomerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/CustomerRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainWork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transaction/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/transaction/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customer/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerLogin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/MainWork.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/MainWork.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/transaction/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/transaction/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +206,7 @@
       <workItem from="1677250556781" duration="6759000" />
       <workItem from="1677445691690" duration="8872000" />
       <workItem from="1677491588134" duration="1489000" />
-      <workItem from="1677575458808" duration="5391000" />
+      <workItem from="1677575458808" duration="6464000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -401,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677576370334</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1677592273371</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1677592273371</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
