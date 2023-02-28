@@ -2,6 +2,7 @@ package main;
 
 import customer.Customer;
 import customer.CustomerLogin;
+import customer.CustomerRegistration;
 import transaction.Transaction;
 
 import java.util.Scanner;
@@ -21,7 +22,7 @@ public class MainWork {
         if (menu == 1){
             if(!CustomerLogin.logIn())return;
         }else if(menu == 2){
-            singUp();
+            CustomerRegistration.singUp();
             return;
         }else{
             System.out.println("ERROR: Bad choose\nEnd of program");
@@ -60,39 +61,39 @@ public class MainWork {
         System.out.println("End of program");
     }
 
-    private static void singUp() {
-        Scanner in = new Scanner(System.in);
-
-        int customerId = ThreadLocalRandom.current().nextInt(10000, 99999);
-
-        if (customer.checkCustomerId(customerId)) {
-            singUp();
-        } else {
-            System.out.println("customer.Customer Id: " + customerId);
-
-            System.out.println("Enter customer name: ");
-            String name = in.nextLine();
-
-            System.out.println("Enter lastname: ");
-            String lastName = in.nextLine();
-
-            System.out.println("Enter customer address: ");
-            String address = in.nextLine();
-
-            System.out.println("Enter phone: ");
-            String phone = in.nextLine();
-
-            System.out.println("Create pincode: ");
-            int pincode = in.nextInt();
-
-            Customer customer = new Customer(customerId, name, lastName, address, phone, pincode);
-            customer.registration(customerId);
-            System.out.println("Your customer id is | " + customerId + " | Please, make sure you remember it. You will need it in future to login into your account");
-            System.out.println("Your customer account created.");
-        }
-
-
-    }
+//    private static void singUp() {
+//        Scanner in = new Scanner(System.in);
+//
+//        int customerId = ThreadLocalRandom.current().nextInt(10000, 99999);
+//
+//        if (customer.checkCustomerId(customerId)) {
+//            singUp();
+//        } else {
+//            System.out.println("customer.Customer Id: " + customerId);
+//
+//            System.out.println("Enter customer name: ");
+//            String name = in.nextLine();
+//
+//            System.out.println("Enter lastname: ");
+//            String lastName = in.nextLine();
+//
+//            System.out.println("Enter customer address: ");
+//            String address = in.nextLine();
+//
+//            System.out.println("Enter phone: ");
+//            String phone = in.nextLine();
+//
+//            System.out.println("Create pincode: ");
+//            int pincode = in.nextInt();
+//
+//            Customer customer = new Customer(customerId, name, lastName, address, phone, pincode);
+//            customer.registration(customerId);
+//            System.out.println("Your customer id is | " + customerId + " | Please, make sure you remember it. You will need it in future to login into your account");
+//            System.out.println("Your customer account created.");
+//        }
+//
+//
+//    }
 
 //    private static boolean logIn(){
 //        Scanner in = new Scanner(System.in);

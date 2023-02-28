@@ -22,45 +22,45 @@ public class Customer {
     }
 
     public Customer(int customerId, String name, String lastName,String address, String phoneNumber, int pincode) {
-        this.customerId = customerId;
-        this.name = name;
-        this.lastName = lastName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.pincode = pincode;
+        Customer.setCustomerId(customerId);
+        Customer.setName(name);
+        Customer.setLastName(lastName);
+        Customer.setAddress(address);
+        Customer.setPhoneNumber(phoneNumber);
+        Customer.setPincode(pincode);
     }
 
-    public boolean registration(int customerId) {
-        try {
-            this.customerId = customerId;
-
-            Connection connection = DatabaseConnector.getConnection();
-
-            String sql = "INSERT INTO customer VALUES (customerId, '" + pincode + "', '" + name + "', '" + lastName + "', '" + address + "' , '" + phoneNumber + "', '" + balance + "')";
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sql);
-
-            sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + phoneNumber + "'";
-            stmt.executeUpdate(sql);
-
-            stmt.close();
-            connection.close();
-
-            System.out.println("Account created successfully");
-
-            System.out.println("customer.Customer Id(you need to remember it): " + customerId);
-
-            System.out.println("Pincode: " + pincode);
-
-
-            return true;
-        } catch (SQLException e) {
-            System.out.println("customer.Customer.registration() problem");
-            e.printStackTrace();
-        }
-
-        return false;
-    }
+//    public boolean registration(int customerId) {
+//        try {
+//            this.customerId = customerId;
+//
+//            Connection connection = DatabaseConnector.getConnection();
+//
+//            String sql = "INSERT INTO customer VALUES (customerId, '" + pincode + "', '" + name + "', '" + lastName + "', '" + address + "' , '" + phoneNumber + "', '" + balance + "')";
+//            Statement stmt = connection.createStatement();
+//            stmt.executeUpdate(sql);
+//
+//            sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + phoneNumber + "'";
+//            stmt.executeUpdate(sql);
+//
+//            stmt.close();
+//            connection.close();
+//
+//            System.out.println("Account created successfully");
+//
+//            System.out.println("customer.Customer Id(you need to remember it): " + customerId);
+//
+//            System.out.println("Pincode: " + pincode);
+//
+//
+//            return true;
+//        } catch (SQLException e) {
+//            System.out.println("customer.Customer.registration() problem");
+//            e.printStackTrace();
+//        }
+//
+//        return false;
+//    }
 
 //    public boolean login(int customerId, int pincode){
 //        try {
@@ -96,7 +96,7 @@ public class Customer {
 
 //  Method that checks if customer entered correct customer id
 //  I decided to create this function, because I need to check this instance more than once
-    public boolean checkCustomerId(int customerId){
+    public static boolean checkCustomerId(int customerId){
         try {
             Connection connection = DatabaseConnector.getConnection();
 
@@ -105,8 +105,8 @@ public class Customer {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){
-                this.customerId = rs.getInt(1);
-                if (this.customerId == customerId){
+                Customer.setCustomerId(rs.getInt(1));
+                if (Customer.getCustomerId() == customerId){
                     rs.close();
                     stmt.close();
                     connection.close();
@@ -115,7 +115,7 @@ public class Customer {
             }
 
         }catch (SQLException e){
-            System.out.println("customer.Customer.checkCustomerId() problem");
+            System.out.println("Customer.checkCustomerId() problem");
             e.printStackTrace();
         }
 
@@ -317,54 +317,56 @@ public class Customer {
         }
     }
 
-    public int getCustomerId() {
+    public static int getCustomerId() {
         return customerId;
     }
 
-    public int getPincode(){ return pincode; }
+    public static int getPincode(){ return pincode; }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public String getLastName(){
+    public static String getLastName(){
         return lastName;
     }
 
-    public String getAddress() {
+    public static String getAddress() {
         return address;
     }
 
-    public String getPhoneNumber() {
+    public static String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public double getBalance(){
+    public static double getBalance(){
         return balance;
     }
 
-    public void setPincode(int pincode) {
-        this.pincode = pincode;
+    public static void setCustomerId(int customerId){ Customer.customerId = customerId; }
+
+    public static void setPincode(int pincode) {
+        Customer.pincode = pincode;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public static void setName(String name) {
+        Customer.name = name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public static void setLastName(String lastName) {
+        Customer.lastName = lastName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public static void setAddress(String address) {
+        Customer.address = address;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public static void setPhoneNumber(String phoneNumber) {
+        Customer.phoneNumber = phoneNumber;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public static void setBalance(double balance) {
+        Customer.balance = balance;
     }
 }
 
