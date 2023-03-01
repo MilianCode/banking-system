@@ -8,12 +8,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MainWork {
 
-    public static Customer customer = new Customer();
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        int menu = 0;
+        int menu;
         System.out.println("====Choose option====");
         System.out.println("1.Log in\n2.Create account");
         menu = in.nextInt();
@@ -32,24 +30,24 @@ public class MainWork {
         menu = in.nextInt();
         switch (menu){
             case 1:
-                System.out.println("\nYour balance: " + customer.getBalance() +" $\n");
+                System.out.println("\nYour balance: " + Customer.getBalance() +" $\n");
                 System.out.println("End of program");
                 return;
             case 2:
-                deposit();
+                CustomerBalanceManaging.deposit();
                 System.out.println("End of program");
                 return;
             case 3:
-                withdrawal();
+                CustomerBalanceManaging.withdrawal();
                 System.out.println("End of program");
                 return;
             case 4:
-                transfer();
+                CustomerTransactionManaging.transfer();
                 System.out.println("End of program");
                 return;
             case 5:
                 System.out.println("Amount | To id |             Date             |   Type\n"
-                        + customer.showAllTransactions());
+                        + CustomerTransactionManaging.showAllTransactions());
                 System.out.println("End of program");
                 return;
             case 6:
@@ -113,77 +111,77 @@ public class MainWork {
 //            System.out.println("This customer id doesn't exist");
 //        }
 //        return false;
+//
+
+
+//    private static void deposit(){
+//        Scanner in = new Scanner(System.in);
+//        int dep;
+//
+//        System.out.println("Enter amount of deposit: ");
+//        dep = in.nextInt();
+//        if(CustomerBalanceManaging.deposit(dep)){
+//            System.out.println("Successfully deposited " + dep + " $");
+//        }else{
+//            System.out.println("Error while depositing");
+//        }
 //    }
 
+//    private static void withdrawal(){
+//        Scanner in = new Scanner(System.in);
+//        int amount;
+//
+//        if (Customer.getBalance() == 0){
+//            System.out.println("You don't have money on your bank account");
+//            return;
+//        }
+//
+//        System.out.println("Enter the withdrawal amount: ");
+//        amount = in.nextInt();
+//        if(CustomerBalanceManaging.withdraw(amount)){
+//            System.out.println("Successfully withdrawn of " + amount + " $");
+//            System.out.println("Current balance: " + Customer.getBalance());
+//        }else{
+//            System.out.println("Error while withdrawning");
+//        }
+//    }
 
-    private static void deposit(){
-        Scanner in = new Scanner(System.in);
-        int dep;
-
-        System.out.println("Enter amount of deposit: ");
-        dep = in.nextInt();
-        if(CustomerBalanceManaging.deposit(dep)){
-            System.out.println("Successfully deposited " + dep + " $");
-        }else{
-            System.out.println("Error while depositing");
-        }
-    }
-
-    private static void withdrawal(){
-        Scanner in = new Scanner(System.in);
-        int amount;
-
-        if (customer.getBalance() == 0){
-            System.out.println("You don't have money on your bank account");
-            return;
-        }
-
-        System.out.println("Enter the withdrawal amount: ");
-        amount = in.nextInt();
-        if(CustomerBalanceManaging.withdraw(amount)){
-            System.out.println("Successfully withdrawn of " + amount + " $");
-            System.out.println("Current balance: " + customer.getBalance());
-        }else{
-            System.out.println("Error while withdrawning");
-        }
-    }
-
-    private static void transfer(){
-        Scanner in = new Scanner(System.in);
-        int receiveId, amount;
-        String type;
-
-        if (customer.getBalance() == 0){
-            System.out.println("You don't have money on your bank account");
-            return;
-        }
-
-        System.out.println("Enter recipient customer id: ");
-        receiveId = in.nextInt();
-
-        if (!Customer.checkCustomerId(receiveId)){
-            System.out.println("ERROR: This id doesn't exist");
-            return;
-        }
-
-        if (Customer.getCustomerId() == receiveId){
-            System.out.println("ERROR: You can't transfer money to yourself");
-            return;
-        }
-
-        System.out.println("Enter amount: ");
-        amount = in.nextInt();
-        if (!CustomerTransactionManaging.transferFrom(amount)){
-            return;
-        }
-
-        System.out.print("Enter type: ");
-        in.nextLine();
-        type = in.nextLine();
-
-        CustomerTransactionManaging.transferTo(amount, receiveId);
-        System.out.println("You successfully transfered " + amount +  "$ to " + receiveId);
-        new Transaction(amount, Customer.getCustomerId(), receiveId, type);
-    }
+//    private static void transfer(){
+//        Scanner in = new Scanner(System.in);
+//        int receiveId, amount;
+//        String type;
+//
+//        if (Customer.getBalance() == 0){
+//            System.out.println("You don't have money on your bank account");
+//            return;
+//        }
+//
+//        System.out.println("Enter recipient customer id: ");
+//        receiveId = in.nextInt();
+//
+//        if (!Customer.checkCustomerId(receiveId)){
+//            System.out.println("ERROR: This id doesn't exist");
+//            return;
+//        }
+//
+//        if (Customer.getCustomerId() == receiveId){
+//            System.out.println("ERROR: You can't transfer money to yourself");
+//            return;
+//        }
+//
+//        System.out.println("Enter amount: ");
+//        amount = in.nextInt();
+//        if (!CustomerTransactionManaging.transferFrom(amount)){
+//            return;
+//        }
+//
+//        System.out.print("Enter type: ");
+//        in.nextLine();
+//        type = in.nextLine();
+//
+//        CustomerTransactionManaging.transferTo(amount, receiveId);
+//        System.out.println("You successfully transfered " + amount +  "$ to " + receiveId);
+//        new Transaction(amount, Customer.getCustomerId(), receiveId, type);
+//    }
 }
 

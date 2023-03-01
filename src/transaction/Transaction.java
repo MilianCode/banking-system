@@ -10,24 +10,59 @@ import java.sql.Statement;
 import java.util.Date;
 
 public class Transaction {
-    private double amount;
-    private int fromCustomerId;
-    private int toCustomerId;
-    private Date date;
-    private String type;
+    private final Date date;
 
     public Transaction(double amount, int fromCustomerId, int toCustomerId, String type) {
-        this.amount = amount;
-        this.fromCustomerId = fromCustomerId;
-        this.toCustomerId = toCustomerId;
-        this.type = type;
+
         date = new Date();
 
         try {
             Connection connection = DatabaseConnector.getConnection();
 
             System.out.println("Connection succesful: trans");
-            String sql = "INSERT INTO transaction VALUES ( NULL, "+ amount +", "+ fromCustomerId + ", "+ toCustomerId +", '"+ date.toString() +"', '"+ type +"')";
+            String sql = "INSERT INTO transaction VALUES ( NULL, "+ -amount +", "+ fromCustomerId + ", "+ toCustomerId +", '"+ date.toString() +"', '"+ type +"')";
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+
+            connection.close();
+            stmt.close();
+
+        }catch (SQLException sqle){
+            sqle.printStackTrace();
+        }
+
+    }
+
+    public Transaction(double amount, int fromCustomerId) {
+
+        date = new Date();
+
+        try {
+            Connection connection = DatabaseConnector.getConnection();
+
+            System.out.println("Connection succesful: trans");
+            String sql = "INSERT INTO transaction VALUES ( NULL, "+ -amount +", "+ fromCustomerId + ", "+ fromCustomerId +", '"+ date.toString() +"', 'Withdawal')";
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+
+            connection.close();
+            stmt.close();
+
+        }catch (SQLException sqle){
+            sqle.printStackTrace();
+        }
+
+    }
+
+    public Transaction(double amount, int toCustomerId, int a) {
+
+        date = new Date();
+
+        try {
+            Connection connection = DatabaseConnector.getConnection();
+
+            System.out.println("Connection succesful: trans");
+            String sql = "INSERT INTO transaction VALUES ( NULL, "+ amount +", "+ toCustomerId + ", "+ toCustomerId +", '"+ date.toString() +"', 'Withdawal')";
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
 

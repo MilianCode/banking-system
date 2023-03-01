@@ -1,11 +1,13 @@
 package customer;
 
 import databaseconnector.DatabaseConnector;
+import transaction.Transaction;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class CustomerBalanceManaging extends Customer{
 
@@ -28,6 +30,39 @@ public class CustomerBalanceManaging extends Customer{
         }catch (SQLException e){
             System.out.println("CustomerBalanceManaging.setBalance() problem");
             e.printStackTrace();
+        }
+    }
+
+    public static void deposit(){
+        Scanner in = new Scanner(System.in);
+        int dep;
+
+        System.out.println("Enter amount of deposit: ");
+        dep = in.nextInt();
+        if(CustomerBalanceManaging.deposit(dep)){
+            System.out.println("Successfully deposited " + dep + " $");
+        }else{
+            System.out.println("Error while depositing");
+        }
+    }
+
+    public static void withdrawal(){
+        Scanner in = new Scanner(System.in);
+        int amount;
+
+        if (getBalance() == 0){
+            System.out.println("You don't have money on your bank account");
+            return;
+        }
+
+        System.out.println("Enter the withdrawal amount: ");
+        amount = in.nextInt();
+        if(CustomerBalanceManaging.withdraw(amount)){
+            System.out.println("Successfully withdrawn of " + amount + " $");
+            System.out.println("Current balance: " + getBalance());
+            new Transaction(amount, getCustomerId(), getCustomerId(), "Withdrawal");
+        }else{
+            System.out.println("Error while withdrawning");
         }
     }
 

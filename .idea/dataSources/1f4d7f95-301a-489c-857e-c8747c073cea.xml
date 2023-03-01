@@ -833,7 +833,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>customerId</UnderlyingIndexName>
     </key>
     <column id="246" parent="236" name="transactionId">
-      <AutoIncrement>8</AutoIncrement>
+      <AutoIncrement>10</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

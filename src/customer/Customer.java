@@ -201,48 +201,48 @@ public class Customer {
 //    }
 
 // Method that creating String variable that contains information about all transactions from your account
-    public static String showAllTransactions(){
-        try {
-            Connection connection = DatabaseConnector.getConnection();
-
-            String allTransactions = "";
-            String sql = "Select amount, toId, date, type FROM transaction WHERE fromId = " + customerId;
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-
-            while (rs.next()){
-                for (int i = 1; i <= 4; i++) {
-                    if (i == 1){
-
-                        int amount = rs.getInt(i);
-                        if (amount < 100 && amount >= 10){
-                            allTransactions += rs.getString(i) + "$  | ";
-                        }else if(amount < 10){
-                            allTransactions += rs.getString(i) + "$   | ";
-                        }else{
-                            allTransactions += rs.getString(i) + "$ | ";
-                        }
-
-                    }else if(i == 4){
-                        allTransactions += rs.getString(i);
-                    }else{
-                        allTransactions += rs.getString(i) + " | ";
-                    }
-                }
-                allTransactions += "\n";
-            }
-
-            rs.close();
-            stmt.close();
-            connection.close();
-
-            return allTransactions;
-        }catch (SQLException e){
-            System.out.println("customer.Customer.showAllTransactions() problem");
-            e.printStackTrace();
-        }
-        return "Error";
-    }
+//    public static String showAllTransactions(){
+//        try {
+//            Connection connection = DatabaseConnector.getConnection();
+//
+//            String allTransactions = "";
+//            String sql = "Select amount, toId, date, type FROM transaction WHERE fromId = " + customerId;
+//            Statement stmt = connection.createStatement();
+//            ResultSet rs = stmt.executeQuery(sql);
+//
+//            while (rs.next()){
+//                for (int i = 1; i <= 4; i++) {
+//                    if (i == 1){
+//
+//                        int amount = rs.getInt(i);
+//                        if (amount < 100 && amount >= 10){
+//                            allTransactions += rs.getString(i) + "$  | ";
+//                        }else if(amount < 10){
+//                            allTransactions += rs.getString(i) + "$   | ";
+//                        }else{
+//                            allTransactions += rs.getString(i) + "$ | ";
+//                        }
+//
+//                    }else if(i == 4){
+//                        allTransactions += rs.getString(i);
+//                    }else{
+//                        allTransactions += rs.getString(i) + " | ";
+//                    }
+//                }
+//                allTransactions += "\n";
+//            }
+//
+//            rs.close();
+//            stmt.close();
+//            connection.close();
+//
+//            return allTransactions;
+//        }catch (SQLException e){
+//            System.out.println("customer.Customer.showAllTransactions() problem");
+//            e.printStackTrace();
+//        }
+//        return "Error";
+//    }
 
 //  Method that checks if customer have enought money to make transaction or withdrawal
 //  I decided to create this function, because I need to check this instance more than once
@@ -307,25 +307,3 @@ public class Customer {
         Customer.balance = balance;
     }
 }
-
-
-//    private void setCustomerId(int customerId){
-//        try {
-//            Connection connection;
-//            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking", "root", "root");
-//
-////            I was using this to check if this method was succesfully conected to database. It was helping me to detect problems faster.
-////            System.out.println("Connection succesful: checkId");
-//
-//            String sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + phoneNumber + "'";
-//
-//            Statement stmt = connection.createStatement();
-//            stmt.executeUpdate(sql);
-//
-//            connection.close();
-//            stmt.close();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
