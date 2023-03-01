@@ -54,7 +54,7 @@ public class Transaction {
 
     }
 
-    public Transaction(double amount, int toCustomerId, int a) {
+    public Transaction(double amount, int toCustomerId, String type) {
 
         date = new Date();
 
@@ -62,7 +62,7 @@ public class Transaction {
             Connection connection = DatabaseConnector.getConnection();
 
             System.out.println("Connection succesful: trans");
-            String sql = "INSERT INTO transaction VALUES ( NULL, "+ amount +", "+ toCustomerId + ", "+ toCustomerId +", '"+ date.toString() +"', 'Withdawal')";
+            String sql = "INSERT INTO transaction VALUES ( NULL, "+ amount +", "+ toCustomerId + ", "+ toCustomerId +", '"+ date.toString() +"', 'Deposit')";
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
 

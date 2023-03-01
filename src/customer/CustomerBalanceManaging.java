@@ -60,7 +60,7 @@ public class CustomerBalanceManaging extends Customer{
         if(CustomerBalanceManaging.withdraw(amount)){
             System.out.println("Successfully withdrawn of " + amount + " $");
             System.out.println("Current balance: " + getBalance());
-            new Transaction(amount, getCustomerId(), getCustomerId(), "Withdrawal");
+            new Transaction(amount, getCustomerId());
         }else{
             System.out.println("Error while withdrawning");
         }
