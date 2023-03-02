@@ -119,12 +119,12 @@ public class CustomerTransactionManaging extends Customer{
             Connection connection = DatabaseConnector.getConnection();
 
             String allTransactions = "";
-            String sql = "Select amount, toId, date, type FROM transaction WHERE fromId = " + getCustomerId();
+            String sql = "Select amount, fromId, toId, date, type FROM transaction WHERE fromId = " + getCustomerId() + " OR toId = " + getCustomerId();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){
-                for (int i = 1; i <= 4; i++) {
+                for (int i = 1; i <= 5; i++) {
                     if (i == 1){
 
                         int amount = rs.getInt(i);
@@ -138,7 +138,7 @@ public class CustomerTransactionManaging extends Customer{
                             allTransactions += rs.getString(i) + " $| ";
                         }
 
-                    }else if(i == 4){
+                    }else if(i == 5){
                         allTransactions += rs.getString(i);
                     }else{
                         allTransactions += rs.getString(i) + " | ";

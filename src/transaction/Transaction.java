@@ -19,7 +19,6 @@ public class Transaction {
         try {
             Connection connection = DatabaseConnector.getConnection();
 
-            System.out.println("Connection succesful: trans");
             String sql = "INSERT INTO transaction VALUES ( NULL, "+ -amount +", "+ fromCustomerId + ", "+ toCustomerId +", '"+ date.toString() +"', '"+ type +"')";
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
@@ -40,7 +39,6 @@ public class Transaction {
         try {
             Connection connection = DatabaseConnector.getConnection();
 
-            System.out.println("Connection succesful: trans");
             String sql = "INSERT INTO transaction VALUES ( NULL, "+ -amount +", "+ fromCustomerId + ", "+ fromCustomerId +", '"+ date.toString() +"', 'Withdawal')";
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
@@ -61,7 +59,6 @@ public class Transaction {
         try {
             Connection connection = DatabaseConnector.getConnection();
 
-            System.out.println("Connection succesful: trans");
             String sql = "INSERT INTO transaction VALUES ( NULL, "+ amount +", "+ toCustomerId + ", "+ toCustomerId +", '"+ date.toString() +"', 'Deposit')";
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);

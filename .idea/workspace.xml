@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transaction/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/transaction/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customer/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerBalanceManaging.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerBalanceManaging.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerTransactionManaging.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerTransactionManaging.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/transaction/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/transaction/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MainWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainWork.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +97,7 @@
       <recent name="databaseconnector" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainWork">
+  <component name="RunManager" selected="JUnit.CustomerRegistrationTest.shouldSuccessfullyCreateNewCustomerInDB">
     <configuration name="MainWork" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.MainWork" />
       <module name="BankingSystem" />
@@ -173,10 +170,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainWork" />
         <item itemvalue="JUnit.CustomerRegistrationTest.shouldSuccessfullyCreateNewCustomerInDB" />
         <item itemvalue="JUnit.CustomerLoginTest" />
         <item itemvalue="JUnit.CustomerLoginTest.shouldSuccessfullyLogIn" />
+        <item itemvalue="Application.MainWork" />
         <item itemvalue="JUnit.CustomerLoginTest.shouldConnectToDatabase" />
       </list>
     </recent_temporary>
@@ -213,7 +210,8 @@
       <workItem from="1677491588134" duration="1489000" />
       <workItem from="1677575458808" duration="7181000" />
       <workItem from="1677615348532" duration="3063000" />
-      <workItem from="1677664193720" duration="4702000" />
+      <workItem from="1677664193720" duration="4723000" />
+      <workItem from="1677744548574" duration="4714000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -432,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677670675075</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1677688152306</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1677688152306</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
