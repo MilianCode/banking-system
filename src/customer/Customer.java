@@ -44,7 +44,7 @@ public class Customer {
 
             while (rs.next()){
                 bufId = rs.getInt(1);
-                if (bufId == customerId){
+                if (customerId == bufId){
                     rs.close();
                     stmt.close();
                     connection.close();
@@ -63,12 +63,7 @@ public class Customer {
 //  Method that checks if customer have enought money to make transaction or withdrawal
 //  I decided to create this function, because I need to check this instance more than once
     protected static boolean checkIfCanWithdraw(double amount){
-        if (amount > balance) {
-            System.out.println("Insufficient funds, you have only " + balance + " $ on your bank account");
-            return false;
-        }else{
-            return true;
-        }
+        return amount > balance;
     }
 
     public static int getCustomerId() {

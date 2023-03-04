@@ -7,8 +7,15 @@
     <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainWork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customer/CustomerRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerRegistration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/CustomerRegistrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/CustomerRegistrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/customer/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/Customer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerTransactionManaging.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerTransactionManaging.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/databaseconnector/DatabaseConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/databaseconnector/DatabaseConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/MainWork.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/MainWork.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tests/CustomerRegistrationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tests/CustomerRegistrationTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/transaction/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/transaction/Transaction.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,22 +127,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerLoginTest.shouldConnectToDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BankingSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.CustomerLoginTest" />
-      <option name="METHOD_NAME" value="shouldConnectToDatabase" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CustomerLoginTest.shouldSuccessfullyLogIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BankingSystem" />
       <extension name="coverage">
@@ -148,6 +139,21 @@
       <option name="MAIN_CLASS_NAME" value="tests.CustomerLoginTest" />
       <option name="METHOD_NAME" value="shouldSuccessfullyLogIn" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerRegistrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BankingSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CustomerRegistrationTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -171,10 +177,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CustomerRegistrationTest.shouldSuccessfullyCreateNewCustomerInDB" />
-        <item itemvalue="JUnit.CustomerLoginTest" />
-        <item itemvalue="JUnit.CustomerLoginTest.shouldSuccessfullyLogIn" />
         <item itemvalue="Application.MainWork" />
-        <item itemvalue="JUnit.CustomerLoginTest.shouldConnectToDatabase" />
+        <item itemvalue="JUnit.CustomerLoginTest" />
+        <item itemvalue="JUnit.CustomerRegistrationTest" />
+        <item itemvalue="JUnit.CustomerLoginTest.shouldSuccessfullyLogIn" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +217,8 @@
       <workItem from="1677575458808" duration="7181000" />
       <workItem from="1677615348532" duration="3063000" />
       <workItem from="1677664193720" duration="4723000" />
-      <workItem from="1677744548574" duration="4714000" />
+      <workItem from="1677744548574" duration="7520000" />
+      <workItem from="1677837216819" duration="2373000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -437,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677688152306</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1677774668762</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1677774668762</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

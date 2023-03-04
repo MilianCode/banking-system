@@ -18,7 +18,7 @@ public class CustomerRegistration extends Customer{
         if (checkCustomerId(customerId)) {
             singUp();
         } else {
-            System.out.println("customer.Customer Id: " + customerId);
+            System.out.println("Customer Id: " + customerId);
 
             System.out.println("Enter customer name: ");
             String name = in.nextLine();
@@ -35,7 +35,7 @@ public class CustomerRegistration extends Customer{
             System.out.println("Create pincode: ");
             int pincode = in.nextInt();
 
-            Customer customer = new Customer(customerId, name, lastName, address, phone, pincode);
+            new Customer(customerId, name, lastName, address, phone, pincode);
             registration(customerId);
             System.out.println("Your customer id is | " + customerId + " | Please, make sure you remember it. You will need it in future to login into your account");
             System.out.println("Your customer account created.");
@@ -45,8 +45,9 @@ public class CustomerRegistration extends Customer{
     }
 
     public static boolean registration(int customerId) {
+        setCustomerId(customerId);
         try {
-            setCustomerId(customerId);
+
 
             Connection connection = DatabaseConnector.getConnection();
 
