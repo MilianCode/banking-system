@@ -789,7 +789,6 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8_general_ci</CollationName>
     </table>
     <column id="237" parent="235" name="customerId">
-      <AutoIncrement>58982</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -824,16 +823,18 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <index id="244" parent="235" name="customerId">
+    <index id="244" parent="235" name="PRIMARY">
       <ColNames>customerId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="245" parent="235" name="customerId">
-      <UnderlyingIndexName>customerId</UnderlyingIndexName>
+    <key id="245" parent="235" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="246" parent="236" name="transactionId">
-      <AutoIncrement>7</AutoIncrement>
+      <AutoIncrement>15</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

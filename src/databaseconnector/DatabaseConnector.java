@@ -27,7 +27,6 @@ public abstract class DatabaseConnector {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-
         return con;
     }
 
