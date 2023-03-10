@@ -15,23 +15,20 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerRegistrationTest {
-
     private final static InputStream systemIn = System.in;
     private final static PrintStream systemOut = System.out;
-    private ByteArrayInputStream typeIn;
-    private static ByteArrayOutputStream typeOut;
 
+    private static ByteArrayOutputStream typeOut;
     @BeforeEach
-    void setUp() throws Exception {
+    void setUp(){
         typeOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(typeOut));
     }
     @AfterEach
-    void tearDown() {
+    void tearDown(){
         System.setIn(systemIn);
         System.setOut(systemOut);
     }
-
 
     @Test
     void shouldSuccessfullyCreateNewCustomerInDB(){
@@ -41,12 +38,10 @@ class CustomerRegistrationTest {
                 "9999999999" + System.getProperty("line.separator") +
                 "9999" + System.getProperty("line.separator");
 
-
         System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
 
         CustomerRegistration.singUp();
 
         assertTrue(Customer.checkCustomerId(Customer.getCustomerId()));
     }
-
 }

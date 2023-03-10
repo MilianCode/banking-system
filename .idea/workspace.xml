@@ -8,14 +8,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/customer/CustomerRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerRegistration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests/CustomerRegistrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/CustomerRegistrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/customer/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/Customer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerBalanceManaging.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerBalanceManaging.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerRegistration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerRegistration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerTransactionManaging.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerTransactionManaging.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/databaseconnector/DatabaseConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/databaseconnector/DatabaseConnector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/MainWork.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/MainWork.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tests/CustomerRegistrationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tests/CustomerRegistrationTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/transaction/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/transaction/Transaction.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +105,7 @@
       <recent name="databaseconnector" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CustomerRegistrationTest.shouldSuccessfullyCreateNewCustomerInDB">
+  <component name="RunManager" selected="JUnit.CustomerRegistrationTest">
     <configuration name="MainWork" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.MainWork" />
       <module name="BankingSystem" />
@@ -176,10 +177,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CustomerRegistrationTest.shouldSuccessfullyCreateNewCustomerInDB" />
-        <item itemvalue="Application.MainWork" />
-        <item itemvalue="JUnit.CustomerLoginTest" />
         <item itemvalue="JUnit.CustomerRegistrationTest" />
+        <item itemvalue="Application.MainWork" />
+        <item itemvalue="JUnit.CustomerRegistrationTest.shouldSuccessfullyCreateNewCustomerInDB" />
+        <item itemvalue="JUnit.CustomerLoginTest" />
         <item itemvalue="JUnit.CustomerLoginTest.shouldSuccessfullyLogIn" />
       </list>
     </recent_temporary>
@@ -219,6 +220,11 @@
       <workItem from="1677664193720" duration="4723000" />
       <workItem from="1677744548574" duration="7520000" />
       <workItem from="1677837216819" duration="2373000" />
+      <workItem from="1677927847366" duration="1362000" />
+      <workItem from="1678045245245" duration="1453000" />
+      <workItem from="1678280755735" duration="2221000" />
+      <workItem from="1678353431911" duration="88000" />
+      <workItem from="1678453586151" duration="301000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -451,7 +457,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677774668762</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1677928344180</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1677928344180</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

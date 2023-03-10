@@ -54,7 +54,10 @@ public class CustomerTransactionManaging extends Customer{
     //   Method that takes money from account that makes transaction
     public static boolean transferFrom(double amount) {
 
-        if (!checkIfCanWithdraw(amount)) return false;
+        if (!checkIfCanWithdraw(amount)){
+            System.out.println("Insufficient funds, you have only " + getBalance() + " $ on your bank account");
+            return false;
+        }
 
         setBalance((getBalance() - amount));
 

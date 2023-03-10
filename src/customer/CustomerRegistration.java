@@ -40,42 +40,29 @@ public class CustomerRegistration extends Customer{
             System.out.println("Your customer id is | " + customerId + " | Please, make sure you remember it. You will need it in future to login into your account");
             System.out.println("Your customer account created.");
         }
-
-
     }
 
     public static boolean registration(int customerId) {
         setCustomerId(customerId);
         try {
-
-
             Connection connection = DatabaseConnector.getConnection();
 
-            String sql = "INSERT INTO customer VALUES (customerId, '" + getPincode() + "', '" + getName() + "', " +
+            String sql = "INSERT INTO customer VALUES ("+ getCustomerId() + ", '" + getPincode() + "', '" + getName() + "', " +
                     "'" + getLastName() + "', '" + getAddress() + "' , '" + getPhoneNumber() + "', '" + getBalance() + "')";
             Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sql);
-
-            sql  = "UPDATE customer SET customerId = " + customerId + " WHERE phoneNumber = '" + getPhoneNumber() + "'";
             stmt.executeUpdate(sql);
 
             stmt.close();
             connection.close();
 
             System.out.println("Account created successfully");
-
             System.out.println("Customer Id(you need to remember it): " + customerId);
-
             System.out.println("Pincode: " + getPincode());
-
-
             return true;
         } catch (SQLException e) {
             System.out.println("CustomerReg.registration() problem");
             e.printStackTrace();
         }
-
         return false;
     }
-
 }

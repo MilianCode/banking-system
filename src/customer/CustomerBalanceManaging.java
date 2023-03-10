@@ -91,7 +91,9 @@ public class CustomerBalanceManaging extends Customer{
 
     public static boolean withdraw(double amount) {
 
-        if (!checkIfCanWithdraw(amount)) return false;
+        if (!checkIfCanWithdraw(amount)){
+            System.out.println("Insufficient funds, you have only " + getBalance() + " $ on your bank account");
+            return false;}
 
         setBalance(getBalance() - amount);
 

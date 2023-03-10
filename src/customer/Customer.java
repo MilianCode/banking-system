@@ -63,7 +63,7 @@ public class Customer {
 //  Method that checks if customer have enought money to make transaction or withdrawal
 //  I decided to create this function, because I need to check this instance more than once
     protected static boolean checkIfCanWithdraw(double amount){
-        return amount > balance;
+        return amount < balance;
     }
 
     public static int getCustomerId() {
