@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c2d425c-1943-4e9c-8fd7-b83aff504fc7" name="Changes" comment="https://github.com/MilianCode/banking-system.git">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1f4d7f95-301a-489c-857e-c8747c073cea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerBalanceManaging.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/CustomerRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerTransactionManaging.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests/CustomerRegistrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/CustomerRegistrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customer/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerBalanceManaging.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerBalanceManaging.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerRegistration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerRegistration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customer/CustomerTransactionManaging.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customer/CustomerTransactionManaging.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tests/CustomerRegistrationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tests/CustomerRegistrationTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +67,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-j-8.0.32.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Projects/banking-system&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -128,22 +119,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerLoginTest.shouldSuccessfullyLogIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BankingSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.CustomerLoginTest" />
-      <option name="METHOD_NAME" value="shouldSuccessfullyLogIn" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CustomerRegistrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BankingSystem" />
       <extension name="coverage">
@@ -175,13 +150,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Write tests for class MainWork" type="com.diffblue.cover.write-tests-run-configuration" factoryName="com.diffblue.cover.write-tests-run-configuration" activateToolWindowBeforeRun="false" temporary="true">
+      <module name="BankingSystem" />
+      <settings run-config-name="Write tests for class MainWork" include-system-env-vars="true">
+        <jvm-args />
+        <selection-scope>class</selection-scope>
+        <selected-element key="main.MainWork" />
+      </settings>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CustomerRegistrationTest" />
+        <item itemvalue="JUnit.CustomerLoginTest" />
         <item itemvalue="Application.MainWork" />
         <item itemvalue="JUnit.CustomerRegistrationTest.shouldSuccessfullyCreateNewCustomerInDB" />
-        <item itemvalue="JUnit.CustomerLoginTest" />
-        <item itemvalue="JUnit.CustomerLoginTest.shouldSuccessfullyLogIn" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +207,9 @@
       <workItem from="1678045245245" duration="1453000" />
       <workItem from="1678280755735" duration="2221000" />
       <workItem from="1678353431911" duration="88000" />
-      <workItem from="1678453586151" duration="301000" />
+      <workItem from="1678453586151" duration="1484000" />
+      <workItem from="1679168170203" duration="93000" />
+      <workItem from="1679168274185" duration="67000" />
     </task>
     <task id="LOCAL-00001" summary="https://github.com/MilianCode/banking-system.git">
       <created>1674862340659</created>
@@ -464,7 +449,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677928344180</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="https://github.com/MilianCode/banking-system.git">
+      <created>1678453943711</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1678453943711</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

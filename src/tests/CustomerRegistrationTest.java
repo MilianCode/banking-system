@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class CustomerRegistrationTest {
     private final static InputStream systemIn = System.in;
     private final static PrintStream systemOut = System.out;
-
     private static ByteArrayOutputStream typeOut;
     @BeforeEach
     void setUp(){
